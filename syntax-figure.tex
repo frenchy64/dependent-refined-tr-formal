@@ -2,65 +2,28 @@
 $$
 \begin{altgrammar}
   v &::=&
-                      \x{}
-                      \alt
-                      \hinted{\tatype{}} {\x{}}
-                      \alt \true{} \alt \false{} \alt \nil{}
-                      \alt \class{}
+                      \hashf{} \alt \hasht{}
                 &\mbox{Values} \\
-  \expd{}, \e{} &::=& v \alt
+  \expd{}, \e{} &::=& 
+                      \x{} \alt
+                      v \alt
                       {\comb {\e{}} {\e{}}} \alt {\abs {\x{}} {\t{}} {\e{}}}
-                      \alt
-                      {\tryexp {\e{}} {\class} {\x} {\e{}} {\e{}}}
                       \alt 
                       {\ifexp {\e{}} {\e{}} {\e{}}}
-                      \\ &\alt& 
+                      \alt
                       {\doexp {\e{}} {\e{}}}
                       %{\fnexp {\overrightarrow{\hastype {\x{}} {\t{}}}} {\e{}}}
                       \alt
                       {\letexp {\x{}} {\e{}} {\e{}}}
-                      \alt
-                      {\letexp {\hinted {\classhint{}} {\x{}}} {\e{}} {\e{}}}
-                      \\ &\alt& 
-                      {\fieldexp {fld} {\e{}}}
-                      \alt {\methodexp {mth} {\e{}} {\overrightarrow{\e{}}}}
-                      \alt {\newexp {\class{}} {\overrightarrow{\e{}}}}
-                      \\ &\alt& 
-                      {\fieldstaticexp {\classhint{}} {\tatype{}} {fld} {\e{}}}
-                      \alt {\methodstaticexp {\classhint{}} {\overrightarrow{\tatype{}}} {\tatype{}} {mth} {\e{}} {\overrightarrow{\e{}}}}
-                      \alt {\newstaticexp {\overrightarrow {\tatype{}}} {\classhint{}} {\class{}} {\overrightarrow{\e{}}}}
-                &\mbox{Expressions} \\
-  \s{}, \t{}    &::=& \Top \alt (\class{}\ \overrightarrow{\t{}})
-                      \alt \class\ 
-                      \alt \protocol\ 
-                      \alt {\Instance {\class}}
-                      \alt {\Satisfies {\protocol}}
-                      \\ &\alt&
-                      {\Value \v{}}
+                &\mbox{Expressions} \\\\
+  \s{}, \t{}    &::=& \Top \alt 
+                      {\Num{}} \alt
+                      {\Bool{}} \alt
+                      {\refine {\x{}} {\t{}} {\prop{}}}
                       \alt {\Unionsplice {\overrightarrow{\t{}}}}
                       \alt
-                      {\In {\t{}\ \overrightarrow{\t{}}}}
-                      \alt 
-                      %\alt (\Not\ \t{})
-                      {\All {\overrightarrow{\x{}}} {\t{}}}
-                      \alt
-                      {\TFn {\overrightarrow{\x{}}} \t{}}
-                      \\ &\alt&
-                      {\ArrowOverright {\x{}} {\t{}}
-                                   {\t{}}
-                                   {\filterset {\prop{}} {\prop{}}}
-                                   {\object{}}}
-                      \alt 
-                      {\ArrayTwo {\t{}} {\t{}}}
-                      \alt {\HMapp {\mandatory} {\absent}}
-                      \alt
-                      {\HMapc {\mandatory}}
-                      
-                &\mbox{Typed Clojure Types} \\
-  \tatype{}     &::=& \classhint{} \alt \primitivehint{}
-                &\mbox{Class and Primitive Hints} \\
-  \tatypeunknown{}     &::=& \unknownhint{} \alt \tatype{}
-                &\mbox{tools.analyzer Types} \\ \\
+                      {\ArrowJustType {\x{}} {\t{}} {\t{}}}
+                &\mbox{Types} \\\\
   \prop{}       &::=& {\isprop {\t{}} {\path {\pathelem{}} {\x{}}}}
                       \alt {\notprop {\t{}} {\path {\pathelem{}} {\x{}}}}
                       \alt {\impprop {\prop{}} {\prop{}}}
@@ -68,28 +31,20 @@ $$
                       \alt {\orprop {\prop{}} {\prop{}}}
                       \alt \topprop{}
                       \alt \botprop{}
+                      \alt {\aliasprop {\path {\pathelem{}} {\x{}}} {\path {\pathelem{}} {\x{}}}}
                 &\mbox{Propositions} \\
   \object{}     &::=& {\path {\pathelem{}} {\x{}}}
                       \alt \emptyobject{}
                 &\mbox{Objects} \\
   \pathelem{}   &::=& \overrightarrow{\pesyntax{}}
                 &\mbox{Paths} \\
-  \pesyntax{}   &::=& \classpe{} \alt \keype{k} \alt \countpe{}
+  \pesyntax{}   &::=& \carpe{} \alt \cdrpe{}
                 &\mbox{Path Elements} \\ \\
                 % TODO objects with path
 %  \c{} &::=& \assoc{} \alt \dissoc{} \alt \get{}
 %              &\mbox{Constants}
   \propenv{}   &::=& \overrightarrow{\prop{}}
                &\mbox{Proposition Environment} \\
-  \taenv{}    &::=& \{ \overrightarrow{ \hastype{\x{}} {\tatype{}}} \}
-               &\mbox{tools.analyzer Environment} \\
-  \ctentrymeta{} &::=& \ctentry
-               &\mbox{Class descriptors} \\
-  \ct{}   &::=& \{ \overrightarrow{\classhint{} \Rightarrow \ctentrymeta{}} \}
-               &\mbox{Class Table} \\
-  \classvaluemeta{} 
-          &::=& {\classvalue{\classhint} {\overrightarrow {\classfieldpair{fld} {\v{}}}}}
-               &\mbox{Class Values}
 \end{altgrammar}
 $$
 \caption{Syntax of Terms, Types, Propositions, and Objects}

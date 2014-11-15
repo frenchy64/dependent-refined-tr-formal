@@ -66,6 +66,7 @@
 % TODO figure out how to make #1 : #2 closer to the :
 \newcommand\ArrowOne[5]{\ma{{\hastypesmall {#1} {#2}} \xrightarrow[#5]{#4} #3}}
 \newcommand\ArrowOverright[5]{\ma{{\overrightarrow{\hastypesmall {#1} {#2}}} \xrightarrow[#5]{#4} #3}}
+\newcommand\ArrowJustType[3]{\ma{{\hastypesmall {#1} {#2}} \xrightarrow{} #3}}
 
 \newcommand\All[2]{(\ma{\Allliteral\ [#1]\ #2})}
 \newcommand\TFn[2]{(\ma{\TFnliteral\ [#1]\ #2})}
@@ -75,9 +76,13 @@
 \newbfop\Keyword{Keyword}
 \newbfop\Symbol{Symbol}
 \newbfop\Number{Number}
+\newbfop\Num{N}
+\newbfop\Bool{B}
 \newbfop\Nil{nil}
 \newbfop\True{true}
 \newbfop\False{false}
+\newbfop\Hasht{\#t}
+\newbfop\Hashf{\#f}
 \newbfop\falsy{(\ma{\cup\ \Nil\ \False})}
 \newbfop\falsydiff{\ma{\trdiff{\falsy}}}
 \newcommand\IPersistentMap[2]{(\ma{\IPersistentMapLiteral\ #1\ #2})}
@@ -92,6 +97,7 @@
 \newcommand\Satisfies[1]{(\ma{\Satisfiesliteral\ #1})}
 \newbfop\Instanceliteral{InstanceOf}
 \newcommand\Instance[1]{(\ma{\Instanceliteral\ #1})}
+\newcommand\refine[3]{\ma{\{#1 : #2\ |\ #3\}}}
 
 % terms
 \newmeta\x{x}                   % not sure if \x is reserved...
@@ -103,7 +109,9 @@
 \newmeta\k{k}
 \newmeta\nil{{\mathsf{nil}}}
 \newmeta\true{{\mathsf{true}}}
+\newmeta\hasht{{\mathsf{\#t}}}
 \newmeta\false{{\mathsf{false}}}
+\newmeta\hashf{{\mathsf{\#f}}}
 \newmeta\assoc{assoc}
 \newmeta\dissoc{dissoc}
 \newmeta\get{get}
@@ -190,6 +198,8 @@
 \newcommand\hastype[2]{\ma{#1 \mathbin{:} #2}}
 \newcommand\hastypesmall[2]{\ma{#1 {:} #2}}
 \newcommand\issubtype[2]{\ma{#1 \mathbin{<:} #2}}
+% 2 place relation (really three)
+\newcommand\judgementtwo[2]{\ma{#1 \vdash #2}}
 % 4 place relation (TR formalism)
 \newcommand\judgement[4]{\ma{#1 \vdash #2\ ;\ #3\ ;\ #4}}
 % 7 place relation (TC formalism)
@@ -281,10 +291,12 @@
 \newmeta\prop{\psi}
 \newmeta\propp{\psi'}
 \newmeta\proppp{\psi''}
+\newcommand\aliasprop[2]{\ma{{#1} \equiv {#2}}}
 \newcommand\isprop[2]{\ma{{#1}_{#2}}}
 \newcommand\impprop[2]{\ma{#1 \supset #2}}
 \newcommand\notprop[2]{\ma{{\overline{#1}}_{#2}}}
 \newcommand\andprop[2]{\ma{#1 \wedge #2}}
+\newcommand\andpropthree[3]{\ma{#1 \wedge #2 \wedge #3}}
 \newcommand\orprop[2]{\ma{#1 \vee #2}}
 \newmeta\topprop{\mathbbm{tt}}
 \newmeta\botprop{\mathbbm{ff}}
@@ -301,6 +313,8 @@
 \newmeta\pathelem{\pi}
 % abstract syntax for pathelem
 \newmeta\pesyntax{pe}
+\newmeta\carpe{{\bf car}}
+\newmeta\cdrpe{{\bf cdr}}
 \newmeta\classpe{{\bf Class}}
 \newmeta\countpe{{\bf Count}}
 \newcommand\keype[1]{{\bf Key_{\ma{#1}}}}
