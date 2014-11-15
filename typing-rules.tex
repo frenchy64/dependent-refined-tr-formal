@@ -161,7 +161,7 @@
                          {\impprop {\isprop {\Hashf{}} {v}}
                    {\botprop{}}}}}}}
 
-\infer [T-AppRef]
+\infer [T-App]
 { \judgementtwo {\propenv{}}
                 {\hastype {\e{}}
                           {\ArrowJustType {\x{}} {\s{}}
@@ -177,10 +177,8 @@
                     {\v{3}}
                     {\s{}}
                     {\aliasprop {\v{3}} {\objectp{}}}}}
-}
-{ \judgementtwo {\propenv{}} 
-    {\hastype {\appexp {\e{}} {\ep{}}}
-          {\replacefor 
+                    \\\\
+  {\t{}} =
             {\refine
               {\v{}}
               {\t{}}
@@ -190,44 +188,55 @@
                 {\impprop
                   {\isprop {\Hashf{}} {\v{}}} {\elseprop {\prop{f}}}}
                 {\aliasprop {\v{}} {\object{f}}}}}
+}
+{ \judgementtwo {\propenv{}} 
+    {\hastype {\appexp {\e{}} {\ep{}}}
+          {\replacefor 
+            {\t{}}
             {\objectp{}}
             {\x{}}}}
 }
 
+\infer [T-Subsume]
+{ \judgementtwo {\propenv{}} {\hastype {\e{}} {\t{}}}
+  \\
+\inpropenv {} {\issubtype {\t{}} {\tp{}}}
+}
+{ \judgementtwo {\propenv{}} {\hastype {\e{}} {\tp{}}}
+}
 
-
-
-
-
-% DONT TOUCH
-\infer [T-App]
-{ \judgementfillcol {\propenv{}} {\hastype {\e{}} {\ArrowOne {\x{}} {\s{}}
-                                                       {\t{}}
-                                                       {\filterset {\thenprop {\prop{f}}}
-                                                                   {\elseprop {\prop{f}}}}
-                                                       {\object{f}}}}
-                {\filterset {\thenprop {\prop{}}}
-                            {\elseprop {\prop{}}}}
-                {\object{}}
+\infer [T-Let]
+{ \judgementtwo {\propenv{}} 
+             {\hastype {\e{1}} 
+               {\refine {\v{}}
+                 {\s{}}
+                 {\andproptriple {\v{}} {\thenprop {\prop{1}}} {\elseprop {\prop{1}}} {\object{1}}}}}
+             \\\\
+             \propp{} = {\impprop {\notprop {\Hashf{}} {\x{}}} {\thenprop {\prop{1}}}}
+             \\\\
+             \proppp{} = {\impprop {\isprop {\Hashf{}} {\x{}}} {\elseprop {\prop{1}}}}
+             \\\\
+             \propppp{} = {\aliasprop {\x{}} {\object{1}}}
   \\\\
-  \judgementfillcol {\propenv{}}
-                 {\hastype {\ep{}} {\s{}}}
-                 {\filterset {\thenprop {\propp{}}}
-                             {\elseprop {\propp{}}}}
-                 {\objectp{}} 
-}
-{ \judgementfillcol {\propenv{}} {\hastype {\appexp {\e{}} {\ep{}}}
-                                        {\replacefor {\t{}}
-                                                     {\objectp{}}
-                                                     {\x{}}}}
-                 {\replacefor {\filterset {\thenprop {\prop{f}}}
-                                          {\elseprop {\prop{f}}}}
-                              {\objectp{}}
-                              {\x{}}}
-                 {\replacefor {\object{f}}
-                              {\objectp{}}
-                              {\x{}}}
-}
+  \judgementfillmmcol 
+      {\taenv{}, {\hastype {\x{}} {\tatype{}}}}
+       {\propenv{}, {\isprop {\s{}} {\x{}}},
+         {\propp{}},
+         {\proppp{}},
+         {\propppp{}}
+       }
+             {\hastype {\e{}} {\t{}}} {\filterset {\thenprop {\prop{}}} {\elseprop {\prop{}}}}
+             {\object{}} 
+             }
+{ \judgementtwo {\propenv{}} 
+      {\hastype {\letexp {\x{}} {\e{1}} {\e{}}}
+        {\replacefor 
+          {\refine
+            {\v{}}
+            {\t{}}
+            {\andproptriple {\v{}} {\thenprop {\prop{}}} {\elseprop {\prop{}}}{\object{}}}}
+          {\object{1}}
+          {\x{}}}}}
 
 % invoke complete HMap with present key
 \end{mathpar}

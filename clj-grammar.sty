@@ -291,12 +291,19 @@
 \newmeta\prop{\psi}
 \newmeta\propp{\psi'}
 \newmeta\proppp{\psi''}
+\newmeta\propppp{\psi'''}
 \newcommand\aliasprop[2]{\ma{{#1} \equiv {#2}}}
 \newcommand\isprop[2]{\ma{{#1}_{#2}}}
 \newcommand\impprop[2]{\ma{#1 \supset #2}}
 \newcommand\notprop[2]{\ma{{\overline{#1}}_{#2}}}
 \newcommand\andprop[2]{\ma{#1 \wedge #2}}
 \newcommand\andpropthree[3]{\ma{#1 \wedge #2 \wedge #3}}
+\newcommand\andproptriple[4]{\andpropthree
+                              {\impprop
+                                {\notprop {\Hashf{}} {#1}} {#2}}
+                              {\impprop
+                                {\isprop {\Hashf{}} {#1}} {#3}}
+                              {\aliasprop {#1} {#4}}}
 \newcommand\orprop[2]{\ma{#1 \vee #2}}
 \newmeta\topprop{\mathbbm{tt}}
 \newmeta\botprop{\mathbbm{ff}}
