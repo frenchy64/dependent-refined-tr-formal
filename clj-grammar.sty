@@ -73,6 +73,7 @@
 \newcommand\Value[1]{(\ma{\Valueliteral\ #1})}
 \newbfop\Top{Any}
 \newbfop\Bottom{Nothing}
+\newbfop\Bot{\ma{\bot}}
 \newbfop\Keyword{Keyword}
 \newbfop\Symbol{Symbol}
 \newbfop\Number{Number}
@@ -198,6 +199,7 @@
 \newcommand\hastype[2]{\ma{#1 \mathbin{:} #2}}
 \newcommand\hastypesmall[2]{\ma{#1 {:} #2}}
 \newcommand\issubtype[2]{\ma{#1 \mathbin{<:} #2}}
+\newcommand\issubtypein[3]{\ma{#1 \vdash #2 \mathbin{<:} #3}}
 % 2 place relation (really three)
 \newcommand\judgementtwo[2]{\ma{#1 \vdash #2}}
 % 4 place relation (TR formalism)
@@ -286,12 +288,15 @@
 % evaluation contexts
 \newmeta\E{E}
 
+% update function
+\newcommand\update[4]{\text{update}(#1, #2, #3)_{#4}}
 
 % propositions
 \newmeta\prop{\psi}
 \newmeta\propp{\psi'}
 \newmeta\proppp{\psi''}
 \newmeta\propppp{\psi'''}
+\newmeta\propisnotmeta{\nu}
 \newcommand\aliasprop[2]{\ma{{#1} \equiv {#2}}}
 \newcommand\isprop[2]{\ma{{#1}_{#2}}}
 \newcommand\impprop[2]{\ma{#1 \supset #2}}
@@ -318,6 +323,7 @@
 \newmeta\objectp{o'}
 \newmeta\emptyobject{\emptyset}
 \newmeta\pathelem{\pi}
+\newmeta\pathelemp{\pi'}
 % abstract syntax for pathelem
 \newmeta\pesyntax{pe}
 \newmeta\carpe{{\bf car}}

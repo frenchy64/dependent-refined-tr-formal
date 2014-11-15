@@ -85,81 +85,127 @@
 
 \infer [T-If]
 { \judgementtwo {\propenv{}}
-                {\hastype {\e1} 
+                {\hastype {\e1}
                   {\refine 
                     {\v{1}}
                     {\t{1}}
-                    {\andprop
-                      {\impprop
-                      {\notprop {\Hashf{}} {\v{1}}} {\thenprop {\prop{1}}}}
-                      {\impprop
-                        {\isprop {\Hashf{}} {\v1}} {\elseprop {\prop{1}}}}}}}
+                    {\prop{1}}}}
              \\\\
-  \judgementtwo {\propenv{}, {\thenprop {\prop{1}}}}
+  \inpropenv {\prop{1}} {\aliasprop {\v{1}} {\objectp{}}}
+             \\\\
+  \judgementtwo {\propenv{}, {\thenprop {\replacefor {\prop{1}} {\objectp{}} {\v{1}}}},
+                             {\thenprop {\replacefor {\notprop {\Hashf{}} {\x{}}} {\objectp{}} {\x{}}}}}
                 {\hastype {\e{2}}
                   {\refine {\v2}
                     {\t{}}
-                    {\andpropthree
-                      {\impprop
-                        {\notprop {\Hashf{}} {\v2}} {\thenprop {\prop{2}}}}
-                      {\impprop
-                        {\isprop {\Hashf{}} {\v2}} {\elseprop {\prop{2}}}}
-                      {\aliasprop {\v{2}} {\object{}}}}}}
+                    {\prop{2}}}}
   \\\\
-  \judgementtwo {\propenv{}, {\elseprop {\prop{1}}}}
+  \judgementtwo {\propenv{}, {\thenprop {\replacefor {\prop{1}} {\objectp{}} {\v{1}}}}, 
+                             {\thenprop {\replacefor {\isprop {\Hashf{}} {\x{}}} {\objectp{}} {\x{}}}}}
                 {\hastype {\e{3}}
                   {\refine {\v3}
                     {\t{}}
-                    {\andpropthree
-                      {\impprop
-                        {\notprop {\Hashf{}} {\v3}} {\thenprop {\prop{3}}}}
-                      {\impprop
-                        {\isprop {\Hashf{}} {\v3}} {\elseprop {\prop{3}}}}
-                  {\aliasprop {\v{3}} {\object{}}}}}}
-   \\\\
-   {\thenprop {\prop{}}} = {\orprop {\thenprop {\prop{2}}} {\thenprop {\prop{3}}}}
-   \\
-   {\elseprop {\prop{}}} = {\orprop {\elseprop {\prop{2}}} {\elseprop {\prop{3}}}}
+                    {\prop{3}}}}
+             \\\\
+  \inpropenv {\prop{2}} {\aliasprop {\v{2}} {\object{}}}
+  \\\\
+  \inpropenv {\prop{3}} {\aliasprop {\v{3}} {\object{}}}
+  \\\\
+  {\prop{o}} = {\aliasprop {\v{}} {\object{}}}
              }
 { \judgementtwo {\propenv{}} 
   {\hastype {\ifexp {\e1} {\e2} {\e3}} 
-            {\refine
-              {v}
-              {\t{}}
-              {\andpropthree
-                {\impprop
-                  {\notprop {\Hashf{}} {v}}
-                  {\thenprop {\prop{}}}}
-                {\impprop 
-                  {\isprop {\Hashf{}} {v}}
-                  {\elseprop {\prop{}}}}
-                {\aliasprop {\v{}} {\object{}}}}
-          }}}
+            {\replacefor 
+              {\replacefor 
+                {\refine
+                  {v}
+                  {\t{}}
+                  {\andpropthree
+                    {\prop{2}}
+                    {\prop{3}}
+                    {\prop{o}}
+                    }}
+                  {\object{}} {\v{2}}}
+                {\object{}} {\v{3}}}
+          }}
 
-\infer [T-Abs]
-{ 
-    {\t{r}} = 
-                 {\refine {\v{1}}
-                          {\t{}}
-                          {\andpropthree
-                             {\impprop {\notprop {\Hashf{}} {v}}
-                                       {\thenprop {\prop{}}}}
-                             {\impprop {\isprop {\Hashf{}} {v}}
-                                       {\elseprop {\prop{}}}}
-                             {\aliasprop {\v{1}} {\object{}}}}}
-                             \\\\
-  \judgementtwo {\propenv{}, {\isprop {\s{}} {\x{}}}}
-            {\hastype {\e{}} {\t{r}}}
-          }
-{ \judgementtwo {\propenv{}} 
-    {\hastype {\abs {\x{}} {\s{}} {\e{}}}
-      {\refine {\v{}}
-               {\ArrowJustType {\x{}} {\s{}}
-                 {\t{r}}}
-               {\andprop {\impprop {\notprop {\Hashf{}} {v}}
-                                   {\topprop{}}}
-                         {\impprop {\isprop {\Hashf{}} {v}}
-                   {\botprop{}}}}}}}
+%\infer [T-If]
+%{ \judgementtwo {\propenv{}}
+%                {\hastype {\e1} 
+%                  {\refine 
+%                    {\v{1}}
+%                    {\t{1}}
+%                    {\andprop
+%                      {\impprop
+%                      {\notprop {\Hashf{}} {\v{1}}} {\thenprop {\prop{1}}}}
+%                      {\impprop
+%                        {\isprop {\Hashf{}} {\v1}} {\elseprop {\prop{1}}}}}}}
+%             \\\\
+%  \judgementtwo {\propenv{}, {\thenprop {\prop{1}}}}
+%                {\hastype {\e{2}}
+%                  {\refine {\v2}
+%                    {\t{}}
+%                    {\andpropthree
+%                      {\impprop
+%                        {\notprop {\Hashf{}} {\v2}} {\thenprop {\prop{2}}}}
+%                      {\impprop
+%                        {\isprop {\Hashf{}} {\v2}} {\elseprop {\prop{2}}}}
+%                      {\aliasprop {\v{2}} {\object{}}}}}}
+%  \\\\
+%  \judgementtwo {\propenv{}, {\elseprop {\prop{1}}}}
+%                {\hastype {\e{3}}
+%                  {\refine {\v3}
+%                    {\t{}}
+%                    {\andpropthree
+%                      {\impprop
+%                        {\notprop {\Hashf{}} {\v3}} {\thenprop {\prop{3}}}}
+%                      {\impprop
+%                        {\isprop {\Hashf{}} {\v3}} {\elseprop {\prop{3}}}}
+%                  {\aliasprop {\v{3}} {\object{}}}}}}
+%   \\\\
+%   {\thenprop {\prop{}}} = {\orprop {\thenprop {\prop{2}}} {\thenprop {\prop{3}}}}
+%   \\
+%   {\elseprop {\prop{}}} = {\orprop {\elseprop {\prop{2}}} {\elseprop {\prop{3}}}}
+%             }
+%{ \judgementtwo {\propenv{}} 
+%  {\hastype {\ifexp {\e1} {\e2} {\e3}} 
+%            {\refine
+%              {v}
+%              {\t{}}
+%              {\andpropthree
+%                {\impprop
+%                  {\notprop {\Hashf{}} {v}}
+%                  {\thenprop {\prop{}}}}
+%                {\impprop 
+%                  {\isprop {\Hashf{}} {v}}
+%                  {\elseprop {\prop{}}}}
+%                {\aliasprop {\v{}} {\object{}}}}
+%          }}}
+%
+%\infer [T-Abs]
+%{ 
+%    {\t{r}} = 
+%                 {\refine {\v{1}}
+%                          {\t{}}
+%                          {\andpropthree
+%                             {\impprop {\notprop {\Hashf{}} {v}}
+%                                       {\thenprop {\prop{}}}}
+%                             {\impprop {\isprop {\Hashf{}} {v}}
+%                                       {\elseprop {\prop{}}}}
+%                             {\aliasprop {\v{1}} {\object{}}}}}
+%                             \\\\
+%  \judgementtwo {\propenv{}, {\isprop {\s{}} {\x{}}}}
+%            {\hastype {\e{}} {\t{r}}}
+%          }
+%{ \judgementtwo {\propenv{}} 
+%    {\hastype {\abs {\x{}} {\s{}} {\e{}}}
+%      {\refine {\v{}}
+%               {\ArrowJustType {\x{}} {\s{}}
+%                 {\t{r}}}
+%               {\andprop {\impprop {\notprop {\Hashf{}} {v}}
+%                                   {\topprop{}}}
+%                         {\impprop {\isprop {\Hashf{}} {v}}
+%                   {\botprop{}}}}}}}
 
 \infer [T-App]
 { \judgementtwo {\propenv{}}
