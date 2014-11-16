@@ -3,6 +3,21 @@ $$
 \begin{array}{lclr}
 
 {\replacefor
+  {\filterset {\thenprop {\prop{}}}{\elseprop {\prop{}}}}
+  {\object{}}
+  {\x{}}}
+  &=&
+{\filterset 
+  {\replacefor
+    {\thenprop {\prop{}}}
+    {\object{}}
+    {\x{}}}
+  {\replacefor
+    {\elseprop {\prop{}}}
+    {\object{}}
+    {\x{}}}}
+\\\\
+{\replacefor
   {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
   {\path {\pathelemp{}} {\y{}}}
   {\x{}}}

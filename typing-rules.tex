@@ -18,22 +18,15 @@
 { \judgementtwo {\propenv{}}
       {\hastype 
         {\hasht{}}
-        {\refinenotype
-          {\v{}} 
-          {\isprop {\Hasht{}} {\v{}}
-             }}}
-           }
+        {\Hasht{}}}}
 
 \infer [T-False]
 {}
 { \judgementtwo {\propenv{}}
       {\hastype 
         {\hashf{}}
-        {\refinenotype
-          {\v{}} 
-          {\isprop {\Hashf{}} {\v{}}
-             }}}
-           }
+        {\Hashf{}}
+    }}
 
 %\infer [T-Do]
 %{ \judgementsevcol {\mmenv} {\taenv} {\propenv{}} {\hastype {\e1} {\t1}} {\filterset {\thenprop {\prop{1}}} {\elseprop {\prop1}}} {\object{1}} {\mmenv{}} 
@@ -214,7 +207,74 @@
 { \judgementtwo {\propenv{}} 
       {\hastype {\letexp {\x{}} {\e{1}} {\e{}}}
                 {\replacefor {\t{}} {\object{}} {\x{}}}}}
-% invoke complete HMap with present key
+
+\infer [T-Cons]
+{ \judgementtwo {\propenv{}} {\hastype {\e{1}} {\t{1}}}
+  \\
+  \judgementtwo {\propenv{}} {\hastype {\e{2}} {\t{2}}}
+}
+{ \judgementtwo {\propenv{}}
+  {\hastype {\consexp {\e{1}} {\e{2}}} {\Cons {\t{1}} {\t{2}}}}
+}
+
+\infer [T-Car]
+{ \judgementtwo {\propenv{}} 
+        {\hastype {\e{}} 
+          {\refinenotype {\v{1}} 
+             {\andprop {\isprop{\Cons {\t{1}} {\t{2}}}{\v{1}}}
+                       {\aliasprop {\v{1}} {\object{}}}}}}
+  \\\\
+  \t{} =
+  {\replacefor
+    {\t{1}}
+    {\object{}}
+    {\v{1}}}
+  \\\\
+  \object{r} = 
+  {\replacefor
+    {\path {\carpe{}} {\x{}}}
+    {\object{}}
+    {\x{}}}
+}
+{ \judgementtwo {\propenv{}}
+  {\hastype {\carexp {\e{}}} 
+    {\refinenotype
+        {\v{}}
+        {\andprop
+           {\isprop{\t{}}{\v{}}}
+           {\aliasprop {\v{}} {\object{r}}}
+      }}
+}}
+
+\infer [T-Cdr]
+{ \judgementtwo {\propenv{}} 
+        {\hastype {\e{}} 
+          {\refinenotype {\v{1}} 
+             {\andprop {\isprop{\Cons {\t{1}} {\t{2}}}{\v{1}}}
+                       {\aliasprop {\v{1}} {\object{}}}}}}
+  \\\\
+  \t{} =
+  {\replacefor
+    {\t{2}}
+    {\object{}}
+    {\v{1}}}
+  \\\\
+  \object{r} = 
+  {\replacefor
+    {\path {\cdrpe{}} {\x{}}}
+    {\object{}}
+    {\x{}}}
+}
+{ \judgementtwo {\propenv{}}
+  {\hastype {\cdrexp {\e{}}} 
+    {\refinenotype
+        {\v{}}
+        {\andprop
+           {\isprop{\t{}}{\v{}}}
+           {\aliasprop {\v{}} {\object{r}}}
+      }}
+}}
+
 \end{mathpar}
 \caption{Typing Rules}
 \end{figure*}
