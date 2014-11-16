@@ -67,6 +67,7 @@
 \newcommand\ArrowOne[5]{\ma{{\hastypesmall {#1} {#2}} \xrightarrow[#5]{#4} #3}}
 \newcommand\ArrowOverright[5]{\ma{{\overrightarrow{\hastypesmall {#1} {#2}}} \xrightarrow[#5]{#4} #3}}
 \newcommand\ArrowJustType[3]{\ma{{\hastypesmall {#1} {#2}} \xrightarrow{} #3}}
+\newcommand\Cons[2]{\langle #1, #2 \rangle}
 
 \newcommand\All[2]{(\ma{\Allliteral\ [#1]\ #2})}
 \newcommand\TFn[2]{(\ma{\TFnliteral\ [#1]\ #2})}
@@ -98,12 +99,16 @@
 \newcommand\Satisfies[1]{(\ma{\Satisfiesliteral\ #1})}
 \newbfop\Instanceliteral{InstanceOf}
 \newcommand\Instance[1]{(\ma{\Instanceliteral\ #1})}
-\newcommand\refine[3]{\ma{\{#1 : #2\ |\ #3\}}}
+\newcommand\refine[3]{\ma{\{#1\ |\ {\andprop {\isprop{#2}{#1}} {#3}}\}}}
+\newcommand\refinenotype[2]{\ma{\{#1\ |\ #2\}}}
 
 % terms
 \newmeta\x{x}                   % not sure if \x is reserved...
 \newmeta\xp{x{'}}                   % not sure if \x is reserved...
+\newmeta\y{y}
+\newmeta\z{z}
 \newmeta\v{v}
+\newmeta\vp{v'}
 \newmeta\class{C}
 \newmeta\classp{C{'}}
 \newmeta\protocol{P}
@@ -136,7 +141,7 @@
 \newcommand\ifexp[3]{(\ma{\ifliteral{}\ #1\ #2\ #3})}
 \newcommand\doexp[2]{(\ma{\doliteral{}\ #1\ #2})}
 \newcommand\fnexp[2]{(\ma{\fnliteral{}\ [#1]\ #2})}
-\newcommand\letexp[3]{(\ma{\letliteral{}\ [\ma{#1\ #2}]\ #3})}
+\newcommand\letexp[3]{(\ma{\letliteral{}\ (\ma{#1\ #2})\ #3})}
 \newcommand\appexp[2]{(\ma{#1\ #2})}
 \newcommand\throwexp[1]{(\ma{\throwliteral{}\ #1})}
 \newcommand\newexp[2]{(\ma{\newliteral{}\ #1\ #2})}
@@ -152,6 +157,10 @@
 \newcommand\extendmultiexp[4]{(\ma{\defmethodliteral{}\ #1\ #2\ [#3]\ #4})}
 \newmeta\defliteral{{\bf def}}
 \newcommand\defexp[2]{(\ma{\defliteral{}\ #1\ #2})}
+\newcommand\consexp[2]{(cons\ #1\ #2)}
+
+% free variables
+\newcommand\fv[1]{\text{fv}(#1)}
 
 % Java primitives
 \newmeta\pint{int}
@@ -321,6 +330,8 @@
 \newcommand\path[2]{\ma{#1(#2)}}
 \newmeta\object{o}
 \newmeta\objectp{o'}
+\newmeta\objectpp{o''}
+\newmeta\objectppp{o'''}
 \newmeta\emptyobject{\emptyset}
 \newmeta\pathelem{\pi}
 \newmeta\pathelemp{\pi'}
@@ -360,3 +371,10 @@
 \newcommand\getfieldjava[5]{JVM_{getstatic}[#1, #2, #3, #4] = #5}
 % Class Target Bool
 \newcommand\instanceofjava[3]{JVM_{instanceof}[#1, #2] = #3}
+
+\newcommand\constanttypealign[2]{\delta_{\t{}}(#1)\ &=&\ #2}
+\newcommand\numberhuh[0]{number?}
+\newcommand\booleanhuh[0]{boolean?}
+\newcommand\conshuh[0]{cons?}
+\newcommand\addone[0]{add1}
+\newcommand\zerohuh[0]{zero?}

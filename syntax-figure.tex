@@ -1,26 +1,19 @@
 \begin{figure*}
 $$
 \begin{altgrammar}
-  v &::=&
-                      \hashf{} \alt \hasht{}
+  \v{} &::=& \hashf{} \alt \hasht{}
                 &\mbox{Values} \\
-  \expd{}, \e{} &::=& 
-                      \x{} \alt
-                      v \alt
+  \e{} &::=& \x{} \alt
+                    \v{} \alt
                       {\comb {\e{}} {\e{}}} \alt {\abs {\x{}} {\t{}} {\e{}}}
                       \alt 
                       {\ifexp {\e{}} {\e{}} {\e{}}}
                       \alt
-                      {\doexp {\e{}} {\e{}}}
-                      %{\fnexp {\overrightarrow{\hastype {\x{}} {\t{}}}} {\e{}}}
-                      \alt
                       {\letexp {\x{}} {\e{}} {\e{}}}
+                      \alt
+                      {\consexp {\e{}} {\e{}}}
                 &\mbox{Expressions} \\\\
-  \s{}, \t{}    &::=& \Top \alt 
-                      {\Num{}} \alt
-                      {\Bool{}} \alt
-                      {\refine {\x{}} {\t{}} {\prop{}}}
-                      \alt {\Unionsplice {\overrightarrow{\t{}}}}
+  \s{}, \t{}    &::=& {\refinenotype {\x{}} {\prop{}}}
                       \alt
                       {\ArrowJustType {\x{}} {\t{}} {\t{}}}
                 &\mbox{Types} \\\\
@@ -31,7 +24,7 @@ $$
                       \alt {\orprop {\prop{}} {\prop{}}}
                       \alt \topprop{}
                       \alt \botprop{}
-                      \alt {\aliasprop {\path {\pathelem{}} {\x{}}} {\path {\pathelem{}} {\x{}}}}
+                      \alt {\aliasprop {\object{}} {\object{}}}
                 &\mbox{Propositions} \\
   \object{}     &::=& {\path {\pathelem{}} {\x{}}}
                       \alt \emptyobject{}
@@ -45,6 +38,7 @@ $$
 %              &\mbox{Constants}
   \propenv{}   &::=& \overrightarrow{\prop{}}
                &\mbox{Proposition Environment} \\
+
 \end{altgrammar}
 $$
 \caption{Syntax of Terms, Types, Propositions, and Objects}

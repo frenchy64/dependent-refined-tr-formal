@@ -1,0 +1,208 @@
+\begin{figure*}
+$$
+\begin{array}{lclr}
+
+{\replacefor
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  {\path {\pathelemp{}} {\y{}}}
+  {\x{}}}
+&=&
+  {\isprop {({\replacefor
+               {\propisnotmeta{}}
+               {\path {\pathelem{}} {\y{}}}
+               {\x{}}})}
+           {{\pathelem{}}({\path {\pathelemp{}} {\y{}}})}}
+           \\
+
+{\thenprop
+{\replacefor
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  {\emptyobject{}}
+  {\x{}}}
+}
+&=&
+{\topprop{}}
+\\
+{\elseprop
+{\replacefor
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  {\emptyobject{}}
+  {\x{}}}
+}
+&=&
+{\botprop{}}
+
+\\
+{\replacefor
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  {\object{}}
+  {\z{}}}
+&=&
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  & \x{} \not= \z{}\ \text{and}\ \z{} \not\in {\fv {\propisnotmeta{}}}
+
+\\
+{\thenprop
+{\replacefor
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  {\object{}}
+  {\z{}}}
+}
+&=&
+{\topprop{}}
+  & \x{} \not= \z{}\ \text{and}\ \z{} \in {\fv {\propisnotmeta{}}}
+\\
+{\elseprop
+{\replacefor
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  {\object{}}
+  {\z{}}}
+}
+&=&
+{\botprop{}}
+  & \x{} \not= \z{}\ \text{and}\ \z{} \in {\fv {\propisnotmeta{}}}
+
+\\
+{\replacefor
+  {\topprop{}}
+  {\object{}}
+  {\x{}}}
+&=&
+  {\topprop{}}
+
+\\
+{\replacefor
+  {\botprop{}}
+  {\object{}}
+  {\x{}}}
+&=&
+  {\botprop{}}
+
+\\
+{\thenprop
+{\replacefor
+  {({\impprop {\prop{1}} {\prop{2}}})}
+  {\object{}}
+  {\x{}}}
+}
+&=&
+{\impprop 
+  {\elseprop {\replacefor {\prop{1}} {\object{}} {\x{}}}}
+  {\thenprop {\replacefor {\prop{2}} {\object{}} {\x{}}}}}
+\\
+{\elseprop
+{\replacefor
+  {({\impprop {\prop{1}} {\prop{2}}})}
+  {\object{}}
+  {\x{}}}
+}
+&=&
+{\impprop 
+  {\thenprop {\replacefor {\prop{1}} {\object{}} {\x{}}}}
+  {\elseprop {\replacefor {\prop{2}} {\object{}} {\x{}}}}}
+\\
+{\replacefor
+  {({\orprop {\prop{1}} {\prop{2}}})}
+  {\object{}}
+  {\x{}}}
+&=&
+{\orprop 
+  {\replacefor {\prop{1}} {\object{}} {\x{}}}
+  {\replacefor {\prop{2}} {\object{}} {\x{}}}}
+\\
+{\replacefor
+  {({\andprop {\prop{1}} {\prop{2}}})}
+  {\object{}}
+  {\x{}}}
+&=&
+{\andprop 
+  {\replacefor {\prop{1}} {\object{}} {\x{}}}
+  {\replacefor {\prop{2}} {\object{}} {\x{}}}}
+
+\\
+{\replacefor
+  {({\aliasprop {\objectp{}} {\objectpp{}}})}
+  {\object{}}
+  {\x{}}}
+&=&
+{\aliasprop 
+  {\replacefor
+    {\objectp{}}
+    {\object{}}
+    {\x{}}}
+  {\replacefor
+    {\objectpp{}}
+    {\object{}}
+    {\x{}}}}
+
+    \\\\
+
+{\replacefor
+  {\path {\pathelem{}} {\x{}}}
+  {\path {\pathelemp{}} {\y{}}}
+  {\x{}}}
+           &=&
+{{\pathelem{}}({\path {\pathelemp{}} {\y{}}})}
+
+    \\
+
+{\replacefor
+  {\path {\pathelem{}} {\x{}}}
+  {\emptyobject{}}
+  {\x{}}}
+           &=&
+{\emptyobject{}}
+
+    \\
+
+{\replacefor
+  {\path {\pathelem{}} {\x{}}}
+  {\object{}}
+  {\z{}}}
+           &=&
+{\path {\pathelem{}} {\x{}}}
+
+& \x{} \not= \z{}
+    \\
+
+{\replacefor
+  {\emptyobject{}}
+  {\object{}}
+  {\x{}}}
+           &=&
+{\emptyobject{}}
+    \\\\
+
+{\replacefor
+    {\refinenotype {\v{}} {\prop{}}}
+    {\object{}}
+    {\x{}}}
+&=&
+{\refinenotype {\v{}} 
+  {\replacefor
+      {\prop{}}
+      {\object{}}
+      {\x{}}}}
+      \\
+
+{\replacefor
+    {({\ArrowJustType {\x{}} {\s{}} {\t{}}})}
+    {\object{}}
+    {\z{}}}
+&=&
+{\ArrowJustType
+  {\x{}}
+  {\replacefor
+      {\s{}}
+      {\object{}}
+      {\z{}}}
+  {\replacefor
+      {\t{}}
+      {\object{}}
+      {\z{}}}}
+      & \x{} \not= \z{}
+
+\end{array}
+$$
+\caption{Substitution}
+\end{figure*}

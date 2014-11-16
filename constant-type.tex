@@ -1,0 +1,52 @@
+\begin{figure*}
+$$
+\begin{array}{lclr}
+\constanttypealign 
+  {\numberhuh} 
+  {\ArrowJustType 
+    {\x{}} {\top} 
+    {\refinenotype {\v{}} 
+      {\andpropthree
+        {\isprop {\Bool} {\v{}}}
+        {\impprop {\notprop {\Hashf} {\v{}}}
+                  {\isprop {\Num} {\x{}}}}
+        {\impprop {\isprop {\Hashf} {\v{}}}
+                  {\notprop {\Num} {\x{}}}}}}}
+\\\\
+\constanttypealign 
+  {\booleanhuh} 
+  {\ArrowJustType 
+    {\x{}} {\top} 
+    {\refinenotype {\v{}} 
+      {\andpropthree
+        {\isprop {\Bool} {\v{}}}
+        {\impprop {\notprop {\Hashf} {\v{}}}
+                  {\isprop {\Bool} {\x{}}}}
+        {\impprop {\isprop {\Hashf} {\v{}}}
+                  {\notprop {\Bool} {\x{}}}}}}}
+\\\\
+\constanttypealign 
+  {\conshuh} 
+  {\ArrowJustType 
+    {\x{}} {\top} 
+    {\refinenotype {\v{}} 
+      {\andpropthree
+        {\isprop {\Bool} {\v{}}}
+        {\impprop {\notprop {\Hashf} {\v{}}}
+                  {\isprop {\Cons {\top} {\top}} {\x{}}}}
+        {\impprop {\isprop {\Hashf} {\v{}}}
+                  {\notprop {\Cons {\top} {\top}} {\x{}}}}}}}
+\\\\
+\constanttypealign 
+  {\addone} 
+  {\ArrowJustType 
+    {\x{}} {\Num} {\Num}}
+\\\\
+\constanttypealign 
+  {\zerohuh} 
+  {\ArrowJustType 
+    {\x{}} {\Num} {\Bool}}
+\end{array}
+$$
+\caption{Constant Typing}
+\end{figure*}

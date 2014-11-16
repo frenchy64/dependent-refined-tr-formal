@@ -2,12 +2,6 @@
 \begin{mathpar}
 \infer [T-Var]
 { \inpropenv {\propenv{}} {\isprop {\t{}} {\x{}}} 
-  \\\\
-  {\thenprop {\prop{}}} = {\notprop {\Hashf{}} {\x{}}}
-  \\
-  {\elseprop {\prop{}}} = {\isprop {\Hashf{}} {\x{}}}
-  \\\\
-  {\prop{o}} = {\aliasprop {\v{}} {\x{}}}
 }
 { \judgementtwo
   {\propenv{}} 
@@ -16,55 +10,30 @@
     {\refine 
       {\v{}} 
        {\t{}}
-       {\andpropthree
-         {\impprop
-           {\notprop {\Hashf{}} {\v{}}}
-           {\thenprop {\prop{}}}}
-         {\impprop 
-           {\isprop {\Hashf{}} {\v{}}}
-           {\elseprop {\prop{}}}}
-         {\prop{o}}}
- }}}
+   {\aliasprop {\v{}} {\x{}}}}}
+ }
 
 \infer [T-True]
-{ {\thenprop {\prop{}}} = {\topprop{}}
-  \\
-  {\elseprop {\prop{}}} = {\botprop{}}
-}
+{}
 { \judgementtwo {\propenv{}}
       {\hastype 
-            {\hasht{}}
-        {\refine 
+        {\hasht{}}
+        {\refinenotype
           {\v{}} 
-            {\Hasht{}}
-             {\andprop 
-               {\impprop
-                 {\notprop {\Hashf{}} {\v{}}}
-                 {\thenprop {\prop{}}}}
-               {\impprop 
-                 {\isprop {\Hashf{}} {\v{}}}
-                 {\elseprop {\prop{}}}
-         }}}}}
+          {\isprop {\Hasht{}} {\v{}}
+             }}}
+           }
 
 \infer [T-False]
-{ {\thenprop {\prop{}}} = {\botprop{}}
-  \\
-  {\elseprop {\prop{}}} = {\topprop{}}
-}
+{}
 { \judgementtwo {\propenv{}}
       {\hastype 
-            {\hashf{}}
-        {\refine 
+        {\hashf{}}
+        {\refinenotype
           {\v{}} 
-            {\Hashf{}}
-             {\andprop 
-               {\impprop
-                 {\notprop {\Hashf{}} {\v{}}}
-                 {\thenprop {\prop{}}}}
-               {\impprop 
-                 {\isprop {\Hashf{}} {\v{}}}
-                 {\elseprop {\prop{}}}
-         }}}}}
+          {\isprop {\Hashf{}} {\v{}}
+             }}}
+           }
 
 %\infer [T-Do]
 %{ \judgementsevcol {\mmenv} {\taenv} {\propenv{}} {\hastype {\e1} {\t1}} {\filterset {\thenprop {\prop{1}}} {\elseprop {\prop1}}} {\object{1}} {\mmenv{}} 
@@ -86,9 +55,8 @@
 \infer [T-If]
 { \judgementtwo {\propenv{}}
                 {\hastype {\e1}
-                  {\refine 
+                  {\refinenotype
                     {\v{1}}
-                    {\t{1}}
                     {\prop{1}}}}
              \\\\
   \inpropenv {\prop{1}} {\aliasprop {\v{1}} {\objectp{}}}
@@ -96,38 +64,29 @@
   \judgementtwo {\propenv{}, {\thenprop {\replacefor {\prop{1}} {\objectp{}} {\v{1}}}},
                              {\thenprop {\replacefor {\notprop {\Hashf{}} {\x{}}} {\objectp{}} {\x{}}}}}
                 {\hastype {\e{2}}
-                  {\refine {\v2}
-                    {\t{}}
+                  {\refinenotype {\v2}
                     {\prop{2}}}}
   \\\\
   \judgementtwo {\propenv{}, {\thenprop {\replacefor {\prop{1}} {\objectp{}} {\v{1}}}}, 
                              {\thenprop {\replacefor {\isprop {\Hashf{}} {\x{}}} {\objectp{}} {\x{}}}}}
                 {\hastype {\e{3}}
-                  {\refine {\v3}
-                    {\t{}}
-                    {\prop{3}}}}
-             \\\\
+                  {\refinenotype
+                    {\v{2}}
+                    {\prop{2}}}}
+  \\\\
   \inpropenv {\prop{2}} {\aliasprop {\v{2}} {\object{}}}
-  \\\\
-  \inpropenv {\prop{3}} {\aliasprop {\v{3}} {\object{}}}
-  \\\\
-  {\prop{o}} = {\aliasprop {\v{}} {\object{}}}
              }
 { \judgementtwo {\propenv{}} 
   {\hastype {\ifexp {\e1} {\e2} {\e3}} 
-            {\replacefor 
-              {\replacefor 
-                {\refine
-                  {v}
-                  {\t{}}
-                  {\andpropthree
+              {\refinenotype
+                {\v{}}
+                {\andprop
+                  {\replacefor 
                     {\prop{2}}
-                    {\prop{3}}
-                    {\prop{o}}
-                    }}
-                  {\object{}} {\v{2}}}
-                {\object{}} {\v{3}}}
-          }}
+                    {\object{}}
+                    {\v{2}}}
+                  {\aliasprop {\v{}} {\object{}}}}}}
+          }
 
 %\infer [T-If]
 %{ \judgementtwo {\propenv{}}
@@ -210,36 +169,26 @@
 \infer [T-App]
 { \judgementtwo {\propenv{}}
                 {\hastype {\e{}}
-                          {\ArrowJustType {\x{}} {\s{}}
-                            {\refine {\v{2}}
-                                     {\t{}}
-                                     {\andpropthree {\impprop {\notprop {\Hashf{}} {\v{2}}} {\thenprop {\prop{f}}}}
-                                                    {\impprop {\isprop {\Hashf{}} {\v{2}}} {\elseprop {\prop{f}}}}
-                                                    {\aliasprop {\v{2}} {\object{f}}}}}}}
+                          {\ArrowJustType {\x{}} 
+                                          {\refinenotype
+                                            {\v{}}
+                                            {\prop{}}}
+                                          {\t{}}
+                            }}
   \\\\
   \judgementtwo {\propenv{}}
-                {\hastype {\ep{}} 
-                  {\refine
-                    {\v{3}}
-                    {\s{}}
-                    {\aliasprop {\v{3}} {\objectp{}}}}}
-                    \\\\
-  {\t{}} =
-            {\refine
-              {\v{}}
-              {\t{}}
-              {\andpropthree
-                {\impprop
-                  {\notprop {\Hashf{}} {\v{}}} {\thenprop {\prop{f}}}}
-                {\impprop
-                  {\isprop {\Hashf{}} {\v{}}} {\elseprop {\prop{f}}}}
-                {\aliasprop {\v{}} {\object{f}}}}}
+                {\hastype {\ep{}}
+                  {\refinenotype
+                    {\v{}}
+                    {\prop{}}}}
+  \\\\
+  \inpropenv {\prop{}} {\aliasprop {\v{}} {\object{}}}
 }
 { \judgementtwo {\propenv{}} 
     {\hastype {\appexp {\e{}} {\ep{}}}
           {\replacefor 
             {\t{}}
-            {\objectp{}}
+            {\object{}}
             {\x{}}}}
 }
 
@@ -254,36 +203,17 @@
 \infer [T-Let]
 { \judgementtwo {\propenv{}} 
              {\hastype {\e{1}} 
-               {\refine {\v{}}
-                 {\s{}}
-                 {\andproptriple {\v{}} {\thenprop {\prop{1}}} {\elseprop {\prop{1}}} {\object{1}}}}}
+               {\refinenotype {\v{1}}
+                              {\prop{1}}}}
              \\\\
-             \propp{} = {\impprop {\notprop {\Hashf{}} {\x{}}} {\thenprop {\prop{1}}}}
-             \\\\
-             \proppp{} = {\impprop {\isprop {\Hashf{}} {\x{}}} {\elseprop {\prop{1}}}}
-             \\\\
-             \propppp{} = {\aliasprop {\x{}} {\object{1}}}
+  \inpropenv {\prop{1}} {\aliasprop {\v{1}} {\object{}}}
   \\\\
-  \judgementfillmmcol 
-      {\taenv{}, {\hastype {\x{}} {\tatype{}}}}
-       {\propenv{}, {\isprop {\s{}} {\x{}}},
-         {\propp{}},
-         {\proppp{}},
-         {\propppp{}}
-       }
-             {\hastype {\e{}} {\t{}}} {\filterset {\thenprop {\prop{}}} {\elseprop {\prop{}}}}
-             {\object{}} 
+  \judgementtwo{\propenv{}, {\replacefor {\prop{1}} {\x{}} {\v{1}}}, {\aliasprop {\object{}} {\x{}}}}
+               {\hastype {\e{}} {\t{}}}
              }
 { \judgementtwo {\propenv{}} 
       {\hastype {\letexp {\x{}} {\e{1}} {\e{}}}
-        {\replacefor 
-          {\refine
-            {\v{}}
-            {\t{}}
-            {\andproptriple {\v{}} {\thenprop {\prop{}}} {\elseprop {\prop{}}}{\object{}}}}
-          {\object{1}}
-          {\x{}}}}}
-
+                {\replacefor {\t{}} {\object{}} {\x{}}}}}
 % invoke complete HMap with present key
 \end{mathpar}
 \caption{Typing Rules}

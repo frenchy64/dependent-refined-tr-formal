@@ -1,0 +1,16 @@
+\begin{figure*}
+$$
+\begin{array}{lclr}
+  \top &=& {\refinenotype {\v{}} {\topprop{}}}\\
+  \Bot &=& {\refinenotype {\v{}} {\botprop{}}}\\
+  \Num &=& {\refinenotype {\v{}} {\isprop {\Num} {\v{}}}}\\
+  \Bool &=& {\refinenotype {\v{}} {\isprop {\Bool} {\v{}}}}\\
+  {\Unionsplice {\overrightarrow{\t{}}}}
+    &=& {\refinenotype {\v{}} {\overrightarrow{\isprop {\t{}} {\v{}}}}}
+      & \text{TODO: arrow means proposition disjunction}\\
+  {\Cons {\t{}} {\tp{}}}
+    &=& {\refinenotype {\v{}} {\isprop{\Cons {\t{}} {\tp{}}} {\v{}}}}
+\end{array}
+$$
+\caption{Type Abbreviations}
+\end{figure*}

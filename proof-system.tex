@@ -60,6 +60,15 @@
   \issubtypein {} {\t{}}{\s{}}}
 { \inpropenv {\propenv{}} {\notprop {\t{}}{\path {\pathelem{}} {\x{}}}}}
 
+\infer [L-Alias]
+{ \inpropenv {\propenv{}} {\aliasprop {\object{}}{\objectp{}}}
+  \\\\
+  \issubtypein {} {\object{}} {\objectpp{}}
+  \\\\
+  \issubtypein {} {\objectp{}} {\objectppp{}}
+}
+{ \inpropenv {\propenv{}} {\aliasprop {\objectpp{}}{\objectppp{}}}}
+
 \infer [L-Bot]
 { \inpropenv {\propenv{}} {\isprop {\Bot} {\path {\pathelem{}} {\x{}}}}}
 { \inpropenv {\propenv{}} {\prop{}}}
