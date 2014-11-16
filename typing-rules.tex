@@ -7,10 +7,9 @@
   {\propenv{}} 
   {\hastype
     {\x{}} 
-    {\refine 
+    {\refinenotype
       {\v{}} 
-       {\t{}}
-   {\aliasprop {\v{}} {\x{}}}}}
+      {\aliasprop {\v{}} {\x{}}}}}
  }
 
 \infer [T-True]
@@ -52,34 +51,21 @@
                     {\v{1}}
                     {\prop{1}}}}
              \\\\
-  \inpropenv {\prop{1}} {\aliasprop {\v{1}} {\objectp{}}}
+  \inpropenv {\prop{1}} {\aliasprop {\v{1}} {\object{}}}
+  \\
+  {\v{1}} \not= {\object{}}
              \\\\
-  \judgementtwo {\propenv{}, {\thenprop {\replacefor {\prop{1}} {\objectp{}} {\v{1}}}},
-                             {\thenprop {\replacefor {\notprop {\Hashf{}} {\x{}}} {\objectp{}} {\x{}}}}}
+  \judgementtwo {\propenv{}, {\replacefor {({\andprop {\notprop {\Hashf{}} {\v{1}}} {\prop{1} }})}{\object{}} {\v{1}}}}
                 {\hastype {\e{2}}
-                  {\refinenotype {\v2}
-                    {\prop{2}}}}
-  \\\\
-  \judgementtwo {\propenv{}, {\thenprop {\replacefor {\prop{1}} {\objectp{}} {\v{1}}}}, 
-                             {\thenprop {\replacefor {\isprop {\Hashf{}} {\x{}}} {\objectp{}} {\x{}}}}}
+                  {\t{}}}
+             \\\\
+  \judgementtwo {\propenv{}, {\replacefor {({\andprop {\isprop {\Hashf{}} {\v{1}}} {\prop{1} }})}{\object{}} {\v{1}}}}
                 {\hastype {\e{3}}
-                  {\refinenotype
-                    {\v{2}}
-                    {\prop{2}}}}
-  \\\\
-  \inpropenv {\prop{2}} {\aliasprop {\v{2}} {\object{}}}
+                  {\t{}}}
              }
 { \judgementtwo {\propenv{}} 
   {\hastype {\ifexp {\e1} {\e2} {\e3}} 
-              {\refinenotype
-                {\v{}}
-                {\andprop
-                  {\replacefor 
-                    {\prop{2}}
-                    {\object{}}
-                    {\v{2}}}
-                  {\aliasprop {\v{}} {\object{}}}}}}
-          }
+            {\t{}}}}
 
 %\infer [T-If]
 %{ \judgementtwo {\propenv{}}
@@ -162,22 +148,22 @@
 \infer [T-App]
 { \judgementtwo {\propenv{}}
                 {\hastype {\e{}}
-                          {\ArrowJustType {\x{}} 
-                                          {\refinenotype
-                                            {\v{}}
-                                            {\prop{}}}
+                          {\ArrowJustType {\x{}}
+                                          {\refinenotype {\v{1}} {\prop{1}}}
                                           {\t{}}
                             }}
   \\\\
   \judgementtwo {\propenv{}}
                 {\hastype {\ep{}}
-                  {\refinenotype
-                    {\v{}}
-                    {\prop{}}}}
+                          {\refinenotype {\v{2}} {\prop{2}}}}
+             \\\\
+  \inpropenv {\prop{1}} {\replacefor {\prop{2}} {\v{1}} {\v{2}}}
   \\\\
-  \inpropenv {\prop{}} {\aliasprop {\v{}} {\object{}}}
+  \inpropenv {\prop{2}} {\aliasprop {\v{2}} {\object{}}}
+  \\
+  {\v{2}} \not= {\object{}}
 }
-{ \judgementtwo {\propenv{}} 
+{ \judgementtwo {\propenv{}}
     {\hastype {\appexp {\e{}} {\ep{}}}
           {\replacefor 
             {\t{}}
@@ -198,15 +184,13 @@
              {\hastype {\e{1}} 
                {\refinenotype {\v{1}}
                               {\prop{1}}}}
-             \\\\
-  \inpropenv {\prop{1}} {\aliasprop {\v{1}} {\object{}}}
   \\\\
-  \judgementtwo{\propenv{}, {\replacefor {\prop{1}} {\x{}} {\v{1}}}, {\aliasprop {\object{}} {\x{}}}}
+  \judgementtwo{\propenv{}, {\replacefor {\prop{1}} {\x{}} {\v{1}}}}
                {\hastype {\e{}} {\t{}}}
              }
 { \judgementtwo {\propenv{}} 
       {\hastype {\letexp {\x{}} {\e{1}} {\e{}}}
-                {\replacefor {\t{}} {\object{}} {\x{}}}}}
+                {\replacefor {\t{}} {\emptyobject{}} {\x{}}}}}
 
 \infer [T-Cons]
 { \judgementtwo {\propenv{}} {\hastype {\e{1}} {\t{1}}}
@@ -221,59 +205,60 @@
 { \judgementtwo {\propenv{}} 
         {\hastype {\e{}} 
           {\refinenotype {\v{1}} 
-             {\andprop {\isprop{\Cons {\t{1}} {\t{2}}}{\v{1}}}
-                       {\aliasprop {\v{1}} {\object{}}}}}}
+                         {\prop{1}}}}
   \\\\
-  \t{} =
-  {\replacefor
-    {\t{1}}
-    {\object{}}
-    {\v{1}}}
+  \inpropenv {\prop{1}} {\isprop{\Cons {\t{1}} {\t{2}}}{\v{1}}}
   \\\\
-  \object{r} = 
-  {\replacefor
-    {\path {\carpe{}} {\x{}}}
-    {\object{}}
-    {\x{}}}
+  \inpropenv {\prop{1}} {\aliasprop {\v{1}} {\object{}}}
+  \\
+  {\v{1}} \not= {\object{}}
 }
 { \judgementtwo {\propenv{}}
   {\hastype {\carexp {\e{}}} 
     {\refinenotype
         {\v{}}
-        {\andprop
-           {\isprop{\t{}}{\v{}}}
-           {\aliasprop {\v{}} {\object{r}}}
-      }}
-}}
+        {\replacefor
+          {({\andprop
+              {\prop{1}}
+              {\aliasprop {\path {\carpe{}} {\v{1}}} {\v{}}}})}
+          {\object{}}
+          {\v{1}}}}}
+}
+
 
 \infer [T-Cdr]
 { \judgementtwo {\propenv{}} 
         {\hastype {\e{}} 
           {\refinenotype {\v{1}} 
-             {\andprop {\isprop{\Cons {\t{1}} {\t{2}}}{\v{1}}}
-                       {\aliasprop {\v{1}} {\object{}}}}}}
+                         {\prop{1}}}}
   \\\\
-  \t{} =
-  {\replacefor
-    {\t{2}}
-    {\object{}}
-    {\v{1}}}
+  \inpropenv {\prop{1}} {\isprop{\Cons {\t{1}} {\t{2}}}{\v{1}}}
   \\\\
-  \object{r} = 
-  {\replacefor
-    {\path {\cdrpe{}} {\x{}}}
-    {\object{}}
-    {\x{}}}
+  \inpropenv {\prop{1}} {\aliasprop {\v{1}} {\object{}}}
+  \\
+  {\v{1}} \not= {\object{}}
 }
 { \judgementtwo {\propenv{}}
   {\hastype {\cdrexp {\e{}}} 
     {\refinenotype
         {\v{}}
-        {\andprop
-           {\isprop{\t{}}{\v{}}}
-           {\aliasprop {\v{}} {\object{r}}}
-      }}
-}}
+        {\replacefor
+          {({\andprop
+              {\prop{1}}
+              {\aliasprop {\path {\cdrpe{}} {\v{1}}} {\v{}}}})}
+          {\object{}}
+          {\v{1}}}}}
+}
+
+\infer [T-Abs]
+{ \judgementtwo {\propenv{}, {\isprop {\s{}} {\x{}}}}
+            {\hastype {\e{}} {\t{}}}}
+{ \judgementtwo {\propenv{}} 
+                {\hastype {\abs {\x{}} {\s{}} {\e{}}}
+                          {\ArrowJustType {\x{}} {\s{}} {\t{}}}}
+                                         }
+
+
 
 \end{mathpar}
 \caption{Typing Rules}
