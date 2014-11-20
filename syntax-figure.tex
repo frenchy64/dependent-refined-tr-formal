@@ -11,20 +11,24 @@ $$
                       \alt
                       {\letexp {\x{}} {\e{}} {\e{}}}
                       \alt
+                      {\beginexp {\e{}} {\e{}}}
+                      \alt
                       {\consexp {\e{}} {\e{}}}
                 &\mbox{Expressions} \\\\
-  \s{}, \t{}    &::=& {\refinenotype {\x{}} {\prop{}}}
+  \s{}, \t{}    &::=& {\refinenotype {\rvar{}} {\prop{}}}
                 &\mbox{Types} \\\\
-  \prop{}       &::=& {\isprop {\t{}} {\path {\pathelem{}} {\x{}}}}
-                      \alt {\notprop {\t{}} {\path {\pathelem{}} {\x{}}}}
+  \anyvar{}     &::=& {\rvar{}} \alt {\x{}}
+                &\mbox{Object Variables} \\\\
+  \prop{}       &::=& {\isprop {\t{}} {\path {\pathelem{}} {\anyvar{}}}}
+                      \alt {\notprop {\t{}} {\path {\pathelem{}} {\anyvar{}}}}
                       \alt {\impprop {\prop{}} {\prop{}}}
                       \alt {\andprop {\prop{}} {\prop{}}}
                       \alt {\orprop {\prop{}} {\prop{}}}
                       \alt \topprop{}
                       \alt \botprop{}
-                      \alt {\aliasprop {\object{}} {\object{}}}
+                      \alt {\aliasprop {\path {\pathelem{}} {\anyvar{}}} {\path {\pathelem{}} {\anyvar{}}}}
                 &\mbox{Propositions} \\
-  \object{}     &::=& {\path {\pathelem{}} {\x{}}}
+  \object{}     &::=& {\path {\pathelem{}} {\anyvar{}}}
                       \alt \emptyobject{}
                 &\mbox{Objects} \\
   \pathelem{}   &::=& \overrightarrow{\pesyntax{}}

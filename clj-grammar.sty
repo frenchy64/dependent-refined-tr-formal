@@ -106,8 +106,18 @@
 \newmeta\x{x}                   % not sure if \x is reserved...
 \newmeta\xp{x{'}}                   % not sure if \x is reserved...
 \newmeta\y{y}
+\newmeta\yp{y'}
 \newmeta\z{z}
 \newmeta\v{v}
+% refinement var
+% distinguishing from term variables helps us enforce that the programmer
+% can never use the a refinment variable in T-Var
+\newmeta\rvar{\omega}
+\newmeta\rvarp{\omega'}
+\newmeta\anyvar{\kappa}
+\newmeta\anyvarp{\kappa'}
+\newmeta\anyvarpp{\kappa''}
+\newmeta\anyvarppp{\kappa'''}
 \newmeta\vp{v'}
 \newmeta\class{C}
 \newmeta\classp{C{'}}
@@ -126,6 +136,7 @@
 \newmeta\finallyliteral{{\mathrm{\bf finally}}}
 \newmeta\ifliteral{{\bf{if}}}
 \newmeta\doliteral{{\bf do}}
+\newmeta\beginliteral{{\bf begin}}
 \newmeta\fnliteral{{\bf fn}}
 \newmeta\letliteral{{\mathsf{\bf{let}}}}
 \newmeta\throwliteral{{\bf throw}}
@@ -140,6 +151,7 @@
 \newcommand\tryexp[5]{(\ma{\tryliteral{}\ #1\ (\ma{\catchliteral{}\ #2\ #3\ #4})\ (\ma{\finallyliteral{}\ #5})})}
 \newcommand\ifexp[3]{(\ma{\ifliteral{}\ #1\ #2\ #3})}
 \newcommand\doexp[2]{(\ma{\doliteral{}\ #1\ #2})}
+\newcommand\beginexp[2]{(\ma{\beginliteral{}\ #1\ #2})}
 \newcommand\fnexp[2]{(\ma{\fnliteral{}\ [#1]\ #2})}
 \newcommand\letexp[3]{(\ma{\letliteral{}\ (\ma{#1\ #2})\ #3})}
 \newcommand\appexp[2]{(\ma{#1\ #2})}
@@ -337,6 +349,11 @@
 \newmeta\emptyobject{\emptyset}
 \newmeta\pathelem{\pi}
 \newmeta\pathelemp{\pi'}
+\newmeta\pathelempp{\pi''}
+\newcommand\objectofliteral[0]{object\_of}
+\newcommand\objectof[3]{\objectofliteral(#1, #2) = #3}
+\newcommand\objectofalign[3]{\objectofliteral(#1, #2) &=& #3}
+
 % abstract syntax for pathelem
 \newmeta\pesyntax{pe}
 \newmeta\carpe{{\bf car}}

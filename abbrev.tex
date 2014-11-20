@@ -1,20 +1,20 @@
 \begin{figure*}
 $$
 \begin{array}{lclr}
-  \top &=& {\refinenotype {\v{}} {\topprop{}}}\\
-  \Bot &=& {\refinenotype {\v{}} {\botprop{}}}\\
-  \Hasht &=& {\refinenotype {\v{}} {\isprop {\Hasht} {\v{}}}}\\
-  \Hashf &=& {\refinenotype {\v{}} {\isprop {\Hashf} {\v{}}}}\\
-  \Num &=& {\refinenotype {\v{}} {\isprop {\Num} {\v{}}}}\\
-  \Bool &=& {\refinenotype {\v{}} {\isprop {\Bool} {\v{}}}}\\
+  \top &=& {\refinenotype {\rvar{}} {\topprop{}}}\\
+  \Bot &=& {\refinenotype {\rvar{}} {\botprop{}}}\\
+  \Hasht &=& {\refinenotype {\rvar{}} {\isprop {\Hasht} {\rvar{}}}}\\
+  \Hashf &=& {\refinenotype {\rvar{}} {\isprop {\Hashf} {\rvar{}}}}\\
+  \Num &=& {\refinenotype {\rvar{}} {\isprop {\Num} {\rvar{}}}}\\
+  \Bool &=& {\refinenotype {\rvar{}} {\isprop {\Bool} {\rvar{}}}}\\
   {\Unionsplice {\overrightarrow{\t{}}}}
-    &=& {\refinenotype {\v{}} {\overrightarrow{\isprop {\t{}} {\v{}}}}}
+    &=& {\refinenotype {\rvar{}} {\overrightarrow{\isprop {\t{}} {\rvar{}}}}}
       & \text{TODO: arrow means proposition disjunction}\\
   {\Cons {\t{}} {\tp{}}}
-    &=& {\refinenotype {\v{}} {\isprop{\Cons {\t{}} {\tp{}}} {\v{}}}}
+    &=& {\refinenotype {\rvar{}} {\isprop{\Cons {\t{}} {\tp{}}} {\rvar{}}}}
   \\
                       {\ArrowJustType {\x{}} {\t{}} {\t{}}}
-    &=& {\refinenotype {\v{}} {\isprop {\ArrowJustType {\x{}} {\t{}} {\t{}}}{\v{}}}}
+    &=& {\refinenotype {\rvar{}} {\isprop {\ArrowJustType {\x{}} {\t{}} {\t{}}}{\rvar{}}}}
 \end{array}
 $$
 \caption{Type Abbreviations}

@@ -1,15 +1,20 @@
 \begin{figure*}
 \begin{mathpar}
 \infer [T-Var]
-{ \inpropenv {\propenv{}} {\isprop {\t{}} {\x{}}} 
+{ 
+  \rvar{} \not\in {\fv{\propenv{}}}
+  \\\\
+  \inpropenv {\propenv{}} {\isprop {\t{}} {\x{}}} 
 }
 { \judgementtwo
   {\propenv{}} 
   {\hastype
     {\x{}} 
     {\refinenotype
-      {\v{}} 
-      {\aliasprop {\v{}} {\x{}}}}}
+      {\rvar{}} 
+      {\andprop
+        {\isprop {\t{}} {\rvar{}}}
+        {\aliasprop {\rvar{}} {\x{}}}}}}
  }
 
 \infer [T-True]
@@ -45,61 +50,60 @@
 %             }
 
 \infer [T-If]
-{ \judgementtwo {\propenv{}}
+{ 
+  \rvar{1} \not\in \fv{\propenv{}}
+             \\\\
+  \judgementtwo {\propenv{}}
                 {\hastype {\e1}
                   {\refinenotype
-                    {\v{1}}
+                    {\rvar{1}}
                     {\prop{1}}}}
              \\\\
-  \inpropenv {\prop{1}} {\aliasprop {\v{1}} {\object{}}}
-  \\
-  {\v{1}} \not= {\object{}}
-             \\\\
-  \judgementtwo {\propenv{}, {\replacefor {({\andprop {\notprop {\Hashf{}} {\v{1}}} {\prop{1} }})}{\object{}} {\v{1}}}}
+  \judgementtwo {\propenv{}, {\notprop {\Hashf{}} {\rvar{1}}, {\prop{1}}}}
                 {\hastype {\e{2}}
                   {\t{}}}
              \\\\
-  \judgementtwo {\propenv{}, {\replacefor {({\andprop {\isprop {\Hashf{}} {\v{1}}} {\prop{1} }})}{\object{}} {\v{1}}}}
+  \judgementtwo {\propenv{}, {\isprop {\Hashf{}} {\rvar{1}}, {\prop{1}}}}
                 {\hastype {\e{3}}
                   {\t{}}}
              }
 { \judgementtwo {\propenv{}} 
-  {\hastype {\ifexp {\e1} {\e2} {\e3}} 
+  {\hastype {\ifexp {\e{1}} {\e{2}} {\e{3}}}
             {\t{}}}}
 
 %\infer [T-If]
 %{ \judgementtwo {\propenv{}}
 %                {\hastype {\e1} 
 %                  {\refine 
-%                    {\v{1}}
+%                    {\rvar{1}}
 %                    {\t{1}}
 %                    {\andprop
 %                      {\impprop
-%                      {\notprop {\Hashf{}} {\v{1}}} {\thenprop {\prop{1}}}}
+%                      {\notprop {\Hashf{}} {\rvar{1}}} {\thenprop {\prop{1}}}}
 %                      {\impprop
-%                        {\isprop {\Hashf{}} {\v1}} {\elseprop {\prop{1}}}}}}}
+%                        {\isprop {\Hashf{}} {\rvar1}} {\elseprop {\prop{1}}}}}}}
 %             \\\\
 %  \judgementtwo {\propenv{}, {\thenprop {\prop{1}}}}
 %                {\hastype {\e{2}}
-%                  {\refine {\v2}
+%                  {\refine {\rvar2}
 %                    {\t{}}
 %                    {\andpropthree
 %                      {\impprop
-%                        {\notprop {\Hashf{}} {\v2}} {\thenprop {\prop{2}}}}
+%                        {\notprop {\Hashf{}} {\rvar2}} {\thenprop {\prop{2}}}}
 %                      {\impprop
-%                        {\isprop {\Hashf{}} {\v2}} {\elseprop {\prop{2}}}}
-%                      {\aliasprop {\v{2}} {\object{}}}}}}
+%                        {\isprop {\Hashf{}} {\rvar2}} {\elseprop {\prop{2}}}}
+%                      {\aliasprop {\rvar{2}} {\object{}}}}}}
 %  \\\\
 %  \judgementtwo {\propenv{}, {\elseprop {\prop{1}}}}
 %                {\hastype {\e{3}}
-%                  {\refine {\v3}
+%                  {\refine {\rvar3}
 %                    {\t{}}
 %                    {\andpropthree
 %                      {\impprop
-%                        {\notprop {\Hashf{}} {\v3}} {\thenprop {\prop{3}}}}
+%                        {\notprop {\Hashf{}} {\rvar3}} {\thenprop {\prop{3}}}}
 %                      {\impprop
-%                        {\isprop {\Hashf{}} {\v3}} {\elseprop {\prop{3}}}}
-%                  {\aliasprop {\v{3}} {\object{}}}}}}
+%                        {\isprop {\Hashf{}} {\rvar3}} {\elseprop {\prop{3}}}}
+%                  {\aliasprop {\rvar{3}} {\object{}}}}}}
 %   \\\\
 %   {\thenprop {\prop{}}} = {\orprop {\thenprop {\prop{2}}} {\thenprop {\prop{3}}}}
 %   \\
@@ -117,27 +121,27 @@
 %                {\impprop 
 %                  {\isprop {\Hashf{}} {v}}
 %                  {\elseprop {\prop{}}}}
-%                {\aliasprop {\v{}} {\object{}}}}
+%                {\aliasprop {\rvar{}} {\object{}}}}
 %          }}}
 %
 %\infer [T-Abs]
 %{ 
 %    {\t{r}} = 
-%                 {\refine {\v{1}}
+%                 {\refine {\rvar{1}}
 %                          {\t{}}
 %                          {\andpropthree
 %                             {\impprop {\notprop {\Hashf{}} {v}}
 %                                       {\thenprop {\prop{}}}}
 %                             {\impprop {\isprop {\Hashf{}} {v}}
 %                                       {\elseprop {\prop{}}}}
-%                             {\aliasprop {\v{1}} {\object{}}}}}
+%                             {\aliasprop {\rvar{1}} {\object{}}}}}
 %                             \\\\
 %  \judgementtwo {\propenv{}, {\isprop {\s{}} {\x{}}}}
 %            {\hastype {\e{}} {\t{r}}}
 %          }
 %{ \judgementtwo {\propenv{}} 
 %    {\hastype {\abs {\x{}} {\s{}} {\e{}}}
-%      {\refine {\v{}}
+%      {\refine {\rvar{}}
 %               {\ArrowJustType {\x{}} {\s{}}
 %                 {\t{r}}}
 %               {\andprop {\impprop {\notprop {\Hashf{}} {v}}
@@ -146,28 +150,27 @@
 %                   {\botprop{}}}}}}}
 
 \infer [T-App]
-{ \judgementtwo {\propenv{}}
+{ 
+  \rvar{1}, \rvar{2} \not\in \fv{\propenv{}}
+  \\\\
+  \judgementtwo {\propenv{}}
                 {\hastype {\e{}}
                           {\ArrowJustType {\x{}}
-                                          {\refinenotype {\v{1}} {\prop{1}}}
+                                          {\refinenotype {\rvar{1}} {\prop{1}}}
                                           {\t{}}
                             }}
   \\\\
   \judgementtwo {\propenv{}}
                 {\hastype {\ep{}}
-                          {\refinenotype {\v{2}} {\prop{2}}}}
-             \\\\
-  \inpropenv {\prop{1}} {\replacefor {\prop{2}} {\v{1}} {\v{2}}}
+                          {\refinenotype {\rvar{2}} {\prop{2}}}}
   \\\\
-  \inpropenv {\prop{2}} {\aliasprop {\v{2}} {\object{}}}
-  \\
-  {\v{2}} \not= {\object{}}
+  \inpropenv {\propenv{}, {\aliasprop {\rvar{1}} {\rvar{2}}}} {\impprop {\prop{2}} {\prop{1}}}
 }
 { \judgementtwo {\propenv{}}
     {\hastype {\appexp {\e{}} {\ep{}}}
           {\replacefor 
             {\t{}}
-            {\object{}}
+            {\rvar{2}}
             {\x{}}}}
 }
 
@@ -180,12 +183,15 @@
 }
 
 \infer [T-Let]
-{ \judgementtwo {\propenv{}} 
+{ 
+  \x{}, \rvar{1} \not\in {\fv{\propenv{}}}
+  \\\\
+  \judgementtwo {\propenv{}} 
              {\hastype {\e{1}} 
-               {\refinenotype {\v{1}}
+               {\refinenotype {\rvar{1}}
                               {\prop{1}}}}
   \\\\
-  \judgementtwo{\propenv{}, {\replacefor {\prop{1}} {\x{}} {\v{1}}}}
+  \judgementtwo{{\propenv{}}, {\prop{1}}, {\aliasprop {\rvar{1}} {\x{}}}}
                {\hastype {\e{}} {\t{}}}
              }
 { \judgementtwo {\propenv{}} 
@@ -202,62 +208,67 @@
 }
 
 \infer [T-Car]
-{ \judgementtwo {\propenv{}} 
+{ 
+  {\rvar{}}, {\rvar{1}} \not\in \fv{\propenv{}}
+  \\\\
+  \judgementtwo {\propenv{}} 
         {\hastype {\e{}} 
-          {\refinenotype {\v{1}} 
+          {\refinenotype {\rvar{1}} 
                          {\prop{1}}}}
   \\\\
-  \inpropenv {\prop{1}} {\isprop{\Cons {\t{1}} {\t{2}}}{\v{1}}}
-  \\\\
-  \inpropenv {\prop{1}} {\aliasprop {\v{1}} {\object{}}}
-  \\
-  {\v{1}} \not= {\object{}}
+  \inpropenv {\prop{1}} {\isprop{\Cons {\t{1}} {\t{2}}}{\rvar{1}}}
 }
 { \judgementtwo {\propenv{}}
   {\hastype {\carexp {\e{}}} 
     {\refinenotype
-        {\v{}}
-        {\replacefor
-          {({\andprop
-              {\prop{1}}
-              {\aliasprop {\path {\carpe{}} {\v{1}}} {\v{}}}})}
-          {\object{}}
-          {\v{1}}}}}
+        {\rvar{}}
+        {\andprop
+          {\prop{1}}
+          {\aliasprop {\path {\carpe{}} {\rvar{1}}} {\rvar{}}}}}}
 }
 
-
 \infer [T-Cdr]
-{ \judgementtwo {\propenv{}} 
+{ 
+  {\rvar{}}, {\rvar{1}} \not\in \fv{\propenv{}}
+  \\\\
+  \judgementtwo {\propenv{}} 
         {\hastype {\e{}} 
-          {\refinenotype {\v{1}} 
+          {\refinenotype {\rvar{1}} 
                          {\prop{1}}}}
   \\\\
-  \inpropenv {\prop{1}} {\isprop{\Cons {\t{1}} {\t{2}}}{\v{1}}}
-  \\\\
-  \inpropenv {\prop{1}} {\aliasprop {\v{1}} {\object{}}}
-  \\
-  {\v{1}} \not= {\object{}}
+  \inpropenv {\prop{1}} {\isprop{\Cons {\t{1}} {\t{2}}}{\rvar{1}}}
 }
 { \judgementtwo {\propenv{}}
   {\hastype {\cdrexp {\e{}}} 
     {\refinenotype
-        {\v{}}
-        {\replacefor
-          {({\andprop
-              {\prop{1}}
-              {\aliasprop {\path {\cdrpe{}} {\v{1}}} {\v{}}}})}
-          {\object{}}
-          {\v{1}}}}}
+        {\rvar{}}
+        {\andprop
+          {\prop{1}}
+          {\aliasprop {\path {\cdrpe{}} {\rvar{1}}} {\rvar{}}}}}}
 }
 
 \infer [T-Abs]
-{ \judgementtwo {\propenv{}, {\isprop {\s{}} {\x{}}}}
-            {\hastype {\e{}} {\t{}}}}
+{ 
+  {\x{}} \not\in {\fv{\propenv{}}}
+  \\\\
+  \judgementtwo {{\propenv{}}, {\isprop {\s{}} {\x{}}}}
+            {\hastype {\e{}} {\t{}}}
+}
 { \judgementtwo {\propenv{}} 
                 {\hastype {\abs {\x{}} {\s{}} {\e{}}}
                           {\ArrowJustType {\x{}} {\s{}} {\t{}}}}
                                          }
 
+\infer [T-Begin]
+{ \judgementtwo {\propenv{}} {\hastype {\e{1}} {\refinenotype {\rvar{1}} {\prop{1}}}}
+  \\\\
+  {\rvar{1}} \not\in {\fv{\propenv{}}}
+  \\\\
+  \judgementtwo {\propenv{}, {\prop{1}}} {\hastype {\e{}} {\t{}}}
+}
+{ \judgementtwo {\propenv{}} 
+                {\hastype {\beginexp {\e{1}} {\e{}}} {\t{}}}
+              }
 
 
 \end{mathpar}

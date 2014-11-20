@@ -3,85 +3,98 @@ $$
 \begin{array}{lclr}
 
 {\replacefor
+  {\propenv{}}
+  {\object{}}
+  {\anyvar{}}}
+  &=&
+{\overrightarrow
+  {\replacefor
+    {\prop{}}
+    {\object{}}
+    {\anyvar{}}}}
+  & {\propenv{}} = {\overrightarrow{\prop{}}}
+    \\
+
+{\replacefor
   {\filterset {\thenprop {\prop{}}}{\elseprop {\prop{}}}}
   {\object{}}
-  {\x{}}}
+  {\anyvar{}}}
   &=&
 {\filterset 
   {\replacefor
     {\thenprop {\prop{}}}
     {\object{}}
-    {\x{}}}
+    {\anyvar{}}}
   {\replacefor
     {\elseprop {\prop{}}}
     {\object{}}
-    {\x{}}}}
+    {\anyvar{}}}}
 \\\\
 {\replacefor
-  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
-  {\path {\pathelemp{}} {\y{}}}
-  {\x{}}}
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
+  {\path {\pathelemp{}} {\anyvarp{}}}
+  {\anyvar{}}}
 &=&
   {\isprop {({\replacefor
                {\propisnotmeta{}}
-               {\path {\pathelem{}} {\y{}}}
-               {\x{}}})}
-           {{\pathelem{}}({\path {\pathelemp{}} {\y{}}})}}
+               {\path {\pathelem{}} {\anyvarp{}}}
+               {\anyvar{}}})}
+           {{\pathelem{}}({\path {\pathelemp{}} {\anyvarp{}}})}}
            \\
 
 {\thenprop
 {\replacefor
-  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
   {\emptyobject{}}
-  {\x{}}}
+  {\anyvar{}}}
 }
 &=&
 {\topprop{}}
 \\
 {\elseprop
 {\replacefor
-  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
   {\emptyobject{}}
-  {\x{}}}
+  {\anyvar{}}}
 }
 &=&
 {\botprop{}}
 
 \\
 {\replacefor
-  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
   {\object{}}
-  {\z{}}}
+  {\anyvarppp{}}}
 &=&
-  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
-  & \x{} \not= \z{}\ \text{and}\ \z{} \not\in {\fv {\propisnotmeta{}}}
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
+  & \anyvar{} \not= \anyvarppp{}\ \text{and}\ \anyvarppp{} \not\in {\fv {\propisnotmeta{}}}
 
 \\
 {\thenprop
 {\replacefor
-  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
   {\object{}}
-  {\z{}}}
+  {\anyvarppp{}}}
 }
 &=&
 {\topprop{}}
-  & \x{} \not= \z{}\ \text{and}\ \z{} \in {\fv {\propisnotmeta{}}}
+  & \anyvar{} \not= \anyvarppp{}\ \text{and}\ \anyvarppp{} \in {\fv {\propisnotmeta{}}}
 \\
 {\elseprop
 {\replacefor
-  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\x{}}}}
+  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
   {\object{}}
-  {\z{}}}
+  {\anyvarppp{}}}
 }
 &=&
 {\botprop{}}
-  & \x{} \not= \z{}\ \text{and}\ \z{} \in {\fv {\propisnotmeta{}}}
+  & \anyvar{} \not= \anyvarppp{}\ \text{and}\ \anyvarppp{} \in {\fv {\propisnotmeta{}}}
 
 \\
 {\replacefor
   {\topprop{}}
   {\object{}}
-  {\x{}}}
+  {\anyvar{}}}
 &=&
   {\topprop{}}
 
@@ -89,7 +102,7 @@ $$
 {\replacefor
   {\botprop{}}
   {\object{}}
-  {\x{}}}
+  {\anyvar{}}}
 &=&
   {\botprop{}}
 
@@ -98,124 +111,139 @@ $$
 {\replacefor
   {({\impprop {\prop{1}} {\prop{2}}})}
   {\object{}}
-  {\x{}}}
+  {\anyvar{}}}
 }
 &=&
 {\impprop 
-  {\elseprop {\replacefor {\prop{1}} {\object{}} {\x{}}}}
-  {\thenprop {\replacefor {\prop{2}} {\object{}} {\x{}}}}}
+  {\elseprop {\replacefor {\prop{1}} {\object{}} {\anyvar{}}}}
+  {\thenprop {\replacefor {\prop{2}} {\object{}} {\anyvar{}}}}}
 \\
 {\elseprop
 {\replacefor
   {({\impprop {\prop{1}} {\prop{2}}})}
   {\object{}}
-  {\x{}}}
+  {\anyvar{}}}
 }
 &=&
 {\impprop 
-  {\thenprop {\replacefor {\prop{1}} {\object{}} {\x{}}}}
-  {\elseprop {\replacefor {\prop{2}} {\object{}} {\x{}}}}}
+  {\thenprop {\replacefor {\prop{1}} {\object{}} {\anyvar{}}}}
+  {\elseprop {\replacefor {\prop{2}} {\object{}} {\anyvar{}}}}}
 \\
 {\replacefor
   {({\orprop {\prop{1}} {\prop{2}}})}
   {\object{}}
-  {\x{}}}
+  {\anyvar{}}}
 &=&
 {\orprop 
-  {\replacefor {\prop{1}} {\object{}} {\x{}}}
-  {\replacefor {\prop{2}} {\object{}} {\x{}}}}
+  {\replacefor {\prop{1}} {\object{}} {\anyvar{}}}
+  {\replacefor {\prop{2}} {\object{}} {\anyvar{}}}}
 \\
 {\replacefor
   {({\andprop {\prop{1}} {\prop{2}}})}
   {\object{}}
-  {\x{}}}
+  {\anyvar{}}}
 &=&
 {\andprop 
-  {\replacefor {\prop{1}} {\object{}} {\x{}}}
-  {\replacefor {\prop{2}} {\object{}} {\x{}}}}
+  {\replacefor {\prop{1}} {\object{}} {\anyvar{}}}
+  {\replacefor {\prop{2}} {\object{}} {\anyvar{}}}}
 
 \\
 {\replacefor
-  {({\aliasprop {\objectp{}} {\objectpp{}}})}
-  {\object{}}
-  {\x{}}}
+  {({\aliasprop {\path {\pathelemp{}} {\anyvarp{}}}{\path {\pathelempp{}} {\yp{}}}})}
+  {\path {\pathelem{}} {\anyvarppp{}}}
+  {\anyvar{}}}
 &=&
 {\aliasprop 
   {\replacefor
-    {\objectp{}}
-    {\object{}}
-    {\x{}}}
+    {\path {\pathelemp{}} {\anyvarp{}}}
+    {\path {\pathelem{}} {\anyvarppp{}}}
+    {\anyvar{}}}
   {\replacefor
-    {\objectpp{}}
-    {\object{}}
-    {\x{}}}}
-
-    \\\\
-
-{\replacefor
-  {\path {\pathelem{}} {\x{}}}
-  {\path {\pathelemp{}} {\y{}}}
-  {\x{}}}
-           &=&
-{{\pathelem{}}({\path {\pathelemp{}} {\y{}}})}
+    {\path {\pathelempp{}} {\yp{}}}
+    {\path {\pathelem{}} {\anyvarppp{}}}
+    {\anyvar{}}}}
 
     \\
-
 {\replacefor
-  {\path {\pathelem{}} {\x{}}}
+  {({\aliasprop {\path {\pathelem{}} {\anyvarpp{}}}{\path {\pathelemp{}} {\anyvarppp{}}}})}
   {\emptyobject{}}
-  {\x{}}}
-           &=&
-{\emptyobject{}}
-
-    \\
-
-{\replacefor
-  {\path {\pathelem{}} {\x{}}}
-  {\object{}}
-  {\z{}}}
-           &=&
-{\path {\pathelem{}} {\x{}}}
-
-& \x{} \not= \z{}
-    \\
-
-{\replacefor
-  {\emptyobject{}}
-  {\object{}}
-  {\x{}}}
-           &=&
-{\emptyobject{}}
-    \\\\
-
-{\replacefor
-    {\refinenotype {\v{}} {\prop{}}}
-    {\object{}}
-    {\x{}}}
+  {\anyvar{}}}
 &=&
-{\refinenotype {\v{}} 
+  {\aliasprop {\path {\pathelem{}} {\anyvarpp{}}}{\path {\pathelemp{}} {\anyvarppp{}}}}
+  & \anyvar{} \not= {\anyvarpp{}}\ \text{and}\ \anyvar{} \not= {\anyvarppp{}}
+    \\
+{\replacefor
+  {({\aliasprop {\path {\pathelem{}} {\anyvar{}}}{\path {\pathelemp{}} {\anyvarpp{}}}})}
+  {\emptyobject{}}
+  {\anyvarppp{}}}
+&=&
+\topprop{}
+    \\\\
+
+{\replacefor
+  {\path {\pathelem{}} {\anyvar{}}}
+  {\path {\pathelemp{}} {\anyvarpp{}}}
+  {\anyvar{}}}
+           &=&
+{{\pathelem{}}({\path {\pathelemp{}} {\anyvarpp{}}})}
+
+    \\
+
+{\replacefor
+  {\path {\pathelem{}} {\anyvar{}}}
+  {\emptyobject{}}
+  {\anyvar{}}}
+           &=&
+{\emptyobject{}}
+
+    \\
+
+{\replacefor
+  {\path {\pathelem{}} {\anyvar{}}}
+  {\object{}}
+  {\anyvarppp{}}}
+           &=&
+{\path {\pathelem{}} {\anyvar{}}}
+
+& \anyvar{} \not= \anyvarppp{}
+    \\
+
+{\replacefor
+  {\emptyobject{}}
+  {\object{}}
+  {\anyvar{}}}
+           &=&
+{\emptyobject{}}
+    \\\\
+
+{\replacefor
+    {\refinenotype {\rvar{}} {\prop{}}}
+    {\object{}}
+    {\anyvar{}}}
+&=&
+{\refinenotype {\rvar{}} 
   {\replacefor
       {\prop{}}
       {\object{}}
-      {\x{}}}}
+      {\anyvar{}}}}
       \\
 
 {\replacefor
-    {({\ArrowJustType {\x{}} {\s{}} {\t{}}})}
+    {({\ArrowJustType {\anyvar{}} {\s{}} {\t{}}})}
     {\object{}}
-    {\z{}}}
+    {\anyvarppp{}}}
 &=&
 {\ArrowJustType
-  {\x{}}
+  {\anyvar{}}
   {\replacefor
       {\s{}}
       {\object{}}
-      {\z{}}}
+      {\anyvarppp{}}}
   {\replacefor
       {\t{}}
       {\object{}}
-      {\z{}}}}
-      & \x{} \not= \z{}
+      {\anyvarppp{}}}}
+      & \anyvar{} \not= \anyvarppp{}
 
 \end{array}
 $$

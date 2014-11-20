@@ -29,20 +29,20 @@
 %{ \inpropenv {} {\issubtype {\Unionsplice{\overrightarrow{\t{}}^{i}}} {\s{}}}}
 
 \infer [S-Refine]
-{ \issubtypein {} {\prop{}} {\propp{}}
+{ \inpropenv {\propenv{}} {\impprop {\prop{1}} {\prop{2}}}
 }
 {
-  \issubtypein {}
-      {\refinenotype {\v{}} {\prop{}}}
-      {\refinenotype {\v{}} {\propp{}}}
+  \issubtypein {\propenv{}}
+      {\refinenotype {\rvar{}} {\prop{1}}}
+      {\refinenotype {\rvar{}} {\prop{2}}}
 }
 
 \infer [S-Fun]
-{ \inpropenv {} {\issubtype {\sp{}} {\s{}}}
+{ \issubtypein {\propenv{}} {\sp{}} {\s{}}
   \\
-  \inpropenv {} {\issubtype {\t{}} {\tp{}}}
+  \issubtypein {\propenv{}} {\t{}} {\tp{}}
 }
-{ \issubtypein {}
+{ \issubtypein {\propenv{}}
     {\ArrowJustType {\x{}} {\s{}}
                     {\t{}}}
     {\ArrowJustType {\x{}} {\sp{}}
