@@ -189,20 +189,20 @@
                {\refinenotype {\rvar{1}}
                               {\prop{1}}}}
   \\\\
-  \judgementtwo{{\propenv{}}, {\prop{1}}, {\aliasprop {\rvar{1}} {\x{}}}}
+  \judgementtwo{{\propenv{}}, {\prop{1}[\rvar{1} / \x{}]}}
                {\hastype {\e{}} {\R{}}}
              }
 { \judgementtwo {\propenv{}} 
       {\hastype {\letexp {\x{}} {\e{1}} {\e{}}}
-                {\replacefor {\R{}} {\emptyobject{}} {\x{}}}}}
+                {\R{}}}}
 
 \infer [T-Cons]
-{ \judgementtwo {\propenv{}} {\hastype {\e{1}} {\t{1}}}
+{ \judgementtwo {\propenv{}} {\hastype {\e{1}} {\R{1}}}
   \\
-  \judgementtwo {\propenv{}} {\hastype {\e{2}} {\t{2}}}
+  \judgementtwo {\propenv{}} {\hastype {\e{2}} {\R{2}}}
 }
 { \judgementtwo {\propenv{}}
-  {\hastype {\consexp {\e{1}} {\e{2}}} {\Cons {\t{1}} {\t{2}}}}
+  {\hastype {\consexp {\e{1}} {\e{2}}} {\Cons {\R{1}} {\R{2}}}}
 }
 
 \infer [T-Car]
@@ -214,7 +214,7 @@
           {\refinenotype {\rvar{1}} 
                          {\prop{1}}}}
   \\\\
-  \inpropenv {\prop{1}} {\isprop{\Cons {\t{1}} {\t{2}}}{\rvar{1}}}
+  \inpropenv {\prop{1}} {\isprop{\Cons {\top{}} {\top{}}}{\rvar{1}}}
 }
 { \judgementtwo {\propenv{}}
   {\hastype {\carexp {\e{}}} 
@@ -234,7 +234,7 @@
           {\refinenotype {\rvar{1}} 
                          {\prop{1}}}}
   \\\\
-  \inpropenv {\prop{1}} {\isprop{\Cons {\t{1}} {\t{2}}}{\rvar{1}}}
+  \inpropenv {\prop{1}} {\isprop{\Cons {\top{}} {\top{}}}{\rvar{1}}}
 }
 { \judgementtwo {\propenv{}}
   {\hastype {\cdrexp {\e{}}} 
@@ -249,24 +249,13 @@
 { 
   {\x{}} \not\in {\fv{\propenv{}}}
   \\\\
-  \judgementtwo {{\propenv{}}, {\isprop {\s{}} {\x{}}}}
+  \judgementtwo {{\propenv{}}, \prop{}[x / \rvar{}]}
             {\hastype {\e{}} {\t{}}}
 }
 { \judgementtwo {\propenv{}} 
                 {\hastype {\abs {\x{}} {\s{}} {\e{}}}
-                          {\ArrowJustType {\x{}} {\s{}} {\t{}}}}
+                          {\ArrowJustType {\x{}} {\refinenotype {\rvar{}}{\prop{}}} {\R{}}}}
                                          }
-
-\infer [T-Begin]
-{ \judgementtwo {\propenv{}} {\hastype {\e{1}} {\refinenotype {\rvar{1}} {\prop{1}}}}
-  \\\\
-  {\rvar{1}} \not\in {\fv{\propenv{}}}
-  \\\\
-  \judgementtwo {\propenv{}, {\prop{1}}} {\hastype {\e{}} {\t{}}}
-}
-{ \judgementtwo {\propenv{}} 
-                {\hastype {\beginexp {\e{1}} {\e{}}} {\t{}}}
-              }
 
 
 \end{mathpar}
