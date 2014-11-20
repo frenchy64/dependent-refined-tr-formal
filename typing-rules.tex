@@ -167,7 +167,7 @@
 { \judgementtwo {\propenv{}}
     {\hastype {\appexp {\e{}} {\ep{}}}
           {\replacefor 
-            {\t{}}
+            {\R{}}
             {\rvar{}}
             {\x{}}}}
 }
@@ -247,14 +247,14 @@
 
 \infer [T-Abs]
 { 
-  {\x{}} \not\in {\fv{\propenv{}}}
+  {\x{}} \not\in {\fv{\propenv{}}} \\ \R{} = {\refinenotype {\rvar{}}{\prop{}}}
   \\\\
   \judgementtwo {{\propenv{}}, \prop{}[x / \rvar{}]}
-            {\hastype {\e{}} {\t{}}}
+            {\hastype {\e{}} {\Rp{}}}
 }
 { \judgementtwo {\propenv{}} 
-                {\hastype {\abs {\x{}} {\s{}} {\e{}}}
-                          {\ArrowJustType {\x{}} {\refinenotype {\rvar{}}{\prop{}}} {\R{}}}}
+                {\hastype {\abs {\x{}} {\R{}} {\e{}}}
+                          {\ArrowJustType {\x{}} \R{} {\Rp{}}}}
                                          }
 
 

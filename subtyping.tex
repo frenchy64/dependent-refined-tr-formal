@@ -1,18 +1,18 @@
 \begin{figure*}
 \begin{mathpar}
 
-\infer [SO-Refl]
-{}
-{ \inpropenv {} {\issubtype {\object{}} {\object{}}}}
+%% \infer [SO-Refl]
+%% {}
+%% { \inpropenv {} {\issubtype {\object{}} {\object{}}}}
 
 
-\infer [SO-Top]
-{}
-{ \inpropenv {} {\issubtype {\object{}} {\emptyobject{}}}}
+%% \infer [SO-Top]
+%% {}
+%% { \inpropenv {} {\issubtype {\object{}} {\emptyobject{}}}}
 
 \infer [S-Refl]
 {}
-{ \inpropenv {} {\issubtype {\t{}} {\t{}}}}
+{ \inpropenv {\propenv} {\issubtype {\t{}} {\t{}}}}
 
 % covered in Refine
 %\infer [S-Top]
@@ -28,25 +28,36 @@
 %{ {\overrightarrow {\inpropenv {} {\issubtype {\t{i}} {\s{}}}}}^{i}}
 %{ \inpropenv {} {\issubtype {\Unionsplice{\overrightarrow{\t{}}^{i}}} {\s{}}}}
 
+\infer [S-Pair]
+{\issubrefin {\propenv{}} {\R{1}} {\Rp{1}}
+  \\
+  \issubrefin {\propenv{}} {\R{2}} {\Rp{2}}
+}
+{
+  \issubtypein {\propenv{}}
+               {\Cons {\R{1}} {\R{2}}}
+               {\Cons {\Rp{1}} {\Rp{2}}}
+}
+
 \infer [S-Refine]
 { \inpropenv {\propenv{}} {\impprop {\prop{1}} {\prop{2}}}
 }
 {
-  \issubtypein {\propenv{}}
+  \issubrefin {\propenv{}}
       {\refinenotype {\rvar{}} {\prop{1}}}
       {\refinenotype {\rvar{}} {\prop{2}}}
 }
 
 \infer [S-Fun]
-{ \issubtypein {\propenv{}} {\sp{}} {\s{}}
+{ \issubrefin {\propenv{}} {\Rp{1}} {\R{1}}
   \\
-  \issubtypein {\propenv{}} {\t{}} {\tp{}}
+  \issubrefin {\propenv{}} {\R{2}} {\Rp{2}}
 }
 { \issubtypein {\propenv{}}
-    {\ArrowJustType {\x{}} {\s{}}
-                    {\t{}}}
-    {\ArrowJustType {\x{}} {\sp{}}
-                    {\tp{}}}}
+    {\ArrowJustType {\x{}} {\R{1}}
+                    {\R{2}}}
+    {\ArrowJustType {\x{}} {\Rp{1}}
+                    {\Rp{2}}}}
 
 \end{mathpar}
 \caption{Subtyping rules}
