@@ -8,13 +8,12 @@ $$
   \Num &=& {\refinenotype {\rvar{}} {\isprop {\Num} {\rvar{}}}}\\
   \Bool &=& {\refinenotype {\rvar{}} {\isprop {\Bool} {\rvar{}}}}\\
   {\Unionsplice {\overrightarrow{\t{}}}}
-    &=& {\refinenotype {\rvar{}} {\overrightarrow{\isprop {\t{}} {\rvar{}}}}}
-      & \text{TODO: arrow means proposition disjunction}\\
-  {\Cons {\t{}} {\tp{}}}
-    &=& {\refinenotype {\rvar{}} {\isprop{\Cons {\t{}} {\tp{}}} {\rvar{}}}}
+    &=& {\refinenotype {\rvar{}} {\bigvee \overrightarrow{{\isprop {\t{}} {\rvar{}}}}}} \\
+  {\Cons {\R{}} {\Rp{}}}
+    &=& {\refinenotype {\rvar{}} {\isprop{\Cons {\R{}} {\Rp{}}} {\rvar{}}}}
   \\
                       {\ArrowJustType {\x{}} {\t{}} {\t{}}}
-    &=& {\refinenotype {\rvar{}} {\isprop {\ArrowJustType {\x{}} {\t{}} {\t{}}}{\rvar{}}}}
+    &=& {\refinenotype {\rvar{}} {\isprop {(\ArrowJustType {\x{}} {\R{}} {\R{}})}{\rvar{}}}}
 \end{array}
 $$
 \caption{Type Abbreviations}

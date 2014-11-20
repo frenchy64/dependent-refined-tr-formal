@@ -61,15 +61,15 @@
              \\\\
   \judgementtwo {\propenv{}, {\notprop {\Hashf{}} {\rvar{1}}, {\prop{1}}}}
                 {\hastype {\e{2}}
-                  {\t{}}}
+                  {\R{}}}
              \\\\
   \judgementtwo {\propenv{}, {\isprop {\Hashf{}} {\rvar{1}}, {\prop{1}}}}
                 {\hastype {\e{3}}
-                  {\t{}}}
+                  {\R{}}}
              }
 { \judgementtwo {\propenv{}} 
   {\hastype {\ifexp {\e{1}} {\e{2}} {\e{3}}}
-            {\t{}}}}
+            {\R{}}}}
 
 %\infer [T-If]
 %{ \judgementtwo {\propenv{}}
@@ -151,35 +151,33 @@
 
 \infer [T-App]
 { 
-  \rvar{1}, \rvar{2} \not\in \fv{\propenv{}}
+  \rvar{} \not\in \fv{\propenv{}}
   \\\\
   \judgementtwo {\propenv{}}
                 {\hastype {\e{}}
                           {\ArrowJustType {\x{}}
-                                          {\refinenotype {\rvar{1}} {\prop{1}}}
-                                          {\t{}}
+                                          {\refinenotype {\rvar{}} {\prop{}}}
+                                          {\R{}}
                             }}
   \\\\
   \judgementtwo {\propenv{}}
                 {\hastype {\ep{}}
-                          {\refinenotype {\rvar{2}} {\prop{2}}}}
-  \\\\
-  \inpropenv {\propenv{}, {\aliasprop {\rvar{1}} {\rvar{2}}}} {\impprop {\prop{2}} {\prop{1}}}
+                          {\refinenotype {\rvar{}} {\prop{}}}}
 }
 { \judgementtwo {\propenv{}}
     {\hastype {\appexp {\e{}} {\ep{}}}
           {\replacefor 
             {\t{}}
-            {\rvar{2}}
+            {\rvar{}}
             {\x{}}}}
 }
 
 \infer [T-Subsume]
-{ \judgementtwo {\propenv{}} {\hastype {\e{}} {\t{}}}
+{ \judgementtwo {\propenv{}} {\hastype {\e{}} {\R{}}}
   \\
-\inpropenv {} {\issubtype {\t{}} {\tp{}}}
+\inpropenv {\propenv{}} {\issubtype {\R{}} {\Rp{}}}
 }
-{ \judgementtwo {\propenv{}} {\hastype {\e{}} {\tp{}}}
+{ \judgementtwo {\propenv{}} {\hastype {\e{}} {\Rp{}}}
 }
 
 \infer [T-Let]
@@ -192,11 +190,11 @@
                               {\prop{1}}}}
   \\\\
   \judgementtwo{{\propenv{}}, {\prop{1}}, {\aliasprop {\rvar{1}} {\x{}}}}
-               {\hastype {\e{}} {\t{}}}
+               {\hastype {\e{}} {\R{}}}
              }
 { \judgementtwo {\propenv{}} 
       {\hastype {\letexp {\x{}} {\e{1}} {\e{}}}
-                {\replacefor {\t{}} {\emptyobject{}} {\x{}}}}}
+                {\replacefor {\R{}} {\emptyobject{}} {\x{}}}}}
 
 \infer [T-Cons]
 { \judgementtwo {\propenv{}} {\hastype {\e{1}} {\t{1}}}

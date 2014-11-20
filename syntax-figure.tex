@@ -15,8 +15,9 @@ $$
                       \alt
                       {\consexp {\e{}} {\e{}}}
                 &\mbox{Expressions} \\\\
-  \s{}, \t{}    &::=& {\refinenotype {\rvar{}} {\prop{}}}
-                &\mbox{Types} \\\\
+  \R{}    &::=& {\refinenotype {\rvar{}} {\prop{}}}
+  &\mbox{Refinement Types} \\\\
+  \s{} ,\t{}   &::=& \Hasht \alt \Hashf \alt \Num \alt \ArrowJustType{\x{}}{\R{}}{\R{}} &\mbox{Types} \\\\
   \anyvar{}     &::=& {\rvar{}} \alt {\x{}}
                 &\mbox{Object Variables} \\\\
   \prop{}       &::=& {\isprop {\t{}} {\path {\pathelem{}} {\anyvar{}}}}
@@ -45,3 +46,21 @@ $$
 $$
 \caption{Syntax of Terms, Types, Propositions, and Objects}
 \end{figure*}
+
+
+
+
+  %% \top &=& {\refinenotype {\rvar{}} {\topprop{}}}\\
+  %% \Bot &=& {\refinenotype {\rvar{}} {\botprop{}}}\\
+  %% \Hasht &=& {\refinenotype {\rvar{}} {\isprop {\Hasht} {\rvar{}}}}\\
+  %% \Hashf &=& {\refinenotype {\rvar{}} {\isprop {\Hashf} {\rvar{}}}}\\
+  %% \Num &=& {\refinenotype {\rvar{}} {\isprop {\Num} {\rvar{}}}}\\
+  %% \Bool &=& {\refinenotype {\rvar{}} {\isprop {\Bool} {\rvar{}}}}\\
+  %% {\Unionsplice {\overrightarrow{\t{}}}}
+  %%   &=& {\refinenotype {\rvar{}} {\overrightarrow{\isprop {\t{}} {\rvar{}}}}}
+  %%     & \text{TODO: arrow means proposition disjunction}\\
+  %% {\Cons {\t{}} {\tp{}}}
+  %%   &=& {\refinenotype {\rvar{}} {\isprop{\Cons {\t{}} {\tp{}}} {\rvar{}}}}
+  %% \\
+  %%                     {\ArrowJustType {\x{}} {\t{}} {\t{}}}
+  %%   &=& {\refinenotype {\rvar{}} {\isprop {(\ArrowJustType {\x{}} {\t{}} {\t{}})}{\rvar{}}}}
