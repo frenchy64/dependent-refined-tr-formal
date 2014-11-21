@@ -5,10 +5,10 @@ $$
   \Bot &=& {\refinenotype {\rvar{}} {\botprop{}}}\\
   \Hasht &=& {\refinenotype {\rvar{}} {\isprop {\Hasht} {\rvar{}}}}\\
   \Hashf &=& {\refinenotype {\rvar{}} {\isprop {\Hashf} {\rvar{}}}}\\
-  \Num &=& {\refinenotype {\rvar{}} {\isprop {\Num} {\rvar{}}}}\\
-  \Bool &=& {\refinenotype {\rvar{}} {\isprop {\Bool} {\rvar{}}}}\\
   {\Unionsplice {\overrightarrow{\t{}}}}
     &=& {\refinenotype {\rvar{}} {\bigvee \overrightarrow{{\isprop {\t{}} {\rvar{}}}}}} \\
+  \Num &=& {\refinenotype {\rvar{}} {\isprop {\Num} {\rvar{}}}}\\
+  \Bool &=& {\Unionsplice {\Hasht{} {\Hashf{}}}}\\
   {\Cons {\R{}} {\Rp{}}}
     &=& {\refinenotype {\rvar{}} {\isprop{\Cons {\R{}} {\Rp{}}} {\rvar{}}}}
   \\
@@ -16,5 +16,5 @@ $$
     &=& {\refinenotype {\rvar{}} {\isprop {(\ArrowJustType {\x{}} {\R{}} {\R{}})}{\rvar{}}}}
 \end{array}
 $$
-\caption{Type Abbreviations}
+\caption{Refinement Type Abbreviations}
 \end{figure*}
