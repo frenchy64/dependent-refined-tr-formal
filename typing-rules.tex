@@ -15,21 +15,21 @@
       {\andprop
         {\isprop {\t{}} {\rvar{}}}
         {\aliasprop {\rvar{}} {\x{}}}}}}
- }
+}
 
 \infer [T-True]
 {}
 { \judgementtwo {\propenv{}}
       {\hastype 
         {\hasht{}}
-        {\Hasht{}}}}
+        {\refinenotype{\rvar{}}{\isprop{\Hasht{}}{\rvar{}}}}}}
 
 \infer [T-False]
 {}
 { \judgementtwo {\propenv{}}
       {\hastype 
         {\hashf{}}
-        {\Hashf{}}
+        {\refinenotype{\rvar{}}{\isprop{\Hashf{}}{\rvar{}}}}
     }}
 
 %\infer [T-Do]
@@ -151,14 +151,12 @@
 
 \infer [T-App]
 { 
-  \rvar{} \not\in \fv{\propenv{}}
+  \rvar{} \not\in \fv{\propenv{}} \\ \R{} = \refinenotype{\rvar{}}{\prop{}}
   \\\\
   \judgementtwo {\propenv{}}
-                {\hastype {\e{}}
-                          {\ArrowJustType {\x{}}
-                                          {\refinenotype {\rvar{}} {\prop{}}}
-                                          {\R{}}
-                            }}
+                {\hastype{\e{}}
+                  {\refinenotype{\rvar{0}}
+                  {\isprop{(\ArrowJustType{\x{}}{\R{}}{\Rp{}})}{\rvar{0}}}}}
   \\\\
   \judgementtwo {\propenv{}}
                 {\hastype {\ep{}}

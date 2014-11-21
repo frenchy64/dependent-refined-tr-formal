@@ -17,9 +17,13 @@ $$
                 &\mbox{Expressions} \\\\
   \R{}    &::=& {\refinenotype {\rvar{}} {\prop{}}}
   &\mbox{Refinement Types} \\\\
-  \s{} ,\t{}   &::=& \Hasht \alt \Hashf \alt \Num \alt \ArrowJustType{\x{}}{\R{}}{\R{}} 
-                     \alt {\Cons {\R{}} {\Rp{}}}
-              &\mbox{Types} \\\\
+  \s{} ,\t{}   &::=& \Hasht \alt
+                     \Hashf \alt
+                     \Num \alt
+                     \Unionsplice{\overrightarrow{\R{}}} \alt
+                     \ArrowJustType{\x{}}{\R{}}{\R{}} \alt
+                     \Cons {\R{}} {\R{}}
+  &\mbox{Types} \\\\
   \anyvar{}     &::=& {\rvar{}} \alt {\x{}}
                 &\mbox{Object Variables} \\\\
   \prop{}       &::=& {\isprop {\t{}} {\path {\pathelem{}} {\anyvar{}}}}
