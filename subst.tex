@@ -226,24 +226,48 @@ $$
       {\prop{}}
       {\object{}}
       {\anyvar{}}}}
+    & \anyvar{} \not= \rvar{}
       \\
 
 {\replacefor
-    {({\ArrowJustType {\anyvar{}} {\s{}} {\t{}}})}
+    {\refinenotype {\rvar{}} {\prop{}}}
     {\object{}}
-    {\anyvarppp{}}}
+    {\anyvar{}}}
+&=&
+{\refinenotype {\rvar{}} 
+              {\prop{}}}
+      \\
+
+{\replacefor
+    {({\ArrowJustType {\x{}} {\s{}} {\t{}}})}
+    {\object{}}
+    {\anyvar{}}}
 &=&
 {\ArrowJustType
-  {\anyvar{}}
+  {\x{}}
   {\replacefor
       {\s{}}
       {\object{}}
-      {\anyvarppp{}}}
+      {\anyvar{}}}
   {\replacefor
       {\t{}}
       {\object{}}
-      {\anyvarppp{}}}}
-      & \anyvar{} \not= \anyvarppp{}
+      {\anyvar{}}}}
+      & \x{} \not= \anyvar{}
+      \\
+
+{\replacefor
+    {({\ArrowJustType {\x{}} {\s{}} {\t{}}})}
+    {\object{}}
+    {\anyvar{}}}
+&=&
+{\ArrowJustType
+  {\x{}}
+  {\replacefor
+      {\s{}}
+      {\object{}}
+      {\anyvar{}}}
+  {\t{}}}
 
 \end{array}
 $$
