@@ -316,7 +316,13 @@
 \newmeta\E{E}
 
 % update function
-\newcommand\update[4]{\text{update}(#1, #2, #3)_{#4}}
+\newcommand\metafunctionfont[1]{{\mathsf{#1}}}
+\newcommand\updateliteral[0]{\metafunctionfont{update}}
+\newcommand\update[4]{\updateliteral(#1, #2, #3, #4)}
+\newcommand\restrictliteral[0]{\metafunctionfont{restrict}}
+\newcommand\restrict[3]{\restrictliteral(#1, #2, #3)}
+\newcommand\removeliteral[0]{\metafunctionfont{remove}}
+\newcommand\remove[3]{\removeliteral(#1, #2, #3)}
 
 % propositions
 \newmeta\prop{\psi}
@@ -324,10 +330,12 @@
 \newmeta\proppp{\psi''}
 \newmeta\propppp{\psi'''}
 \newmeta\propisnotmeta{\nu}
+\newcommand\emptypath[0]{\epsilon}
 \newcommand\aliasprop[2]{\ma{{#1} \equiv {#2}}}
 \newcommand\isprop[2]{\ma{{#1}_{#2}}}
 \newcommand\impprop[2]{\ma{#1 \supset #2}}
-\newcommand\notprop[2]{\ma{{\overline{#1}}_{#2}}}
+\newcommand\nottype[1]{\ma{\overline{#1}}}
+\newcommand\notprop[2]{\ma{{\nottype{#1}}_{#2}}}
 \newcommand\andprop[2]{\ma{#1 \wedge #2}}
 \newcommand\andpropthree[3]{\ma{#1 \wedge #2 \wedge #3}}
 \newcommand\andproptriple[4]{\andpropthree
@@ -357,6 +365,7 @@
 \newcommand\objectofliteral[0]{object\_of}
 \newcommand\objectof[3]{\objectofliteral(#1, #2) = #3}
 \newcommand\objectofalign[3]{\objectofliteral(#1, #2) &=& #3}
+\newcommand\destructpath[2]{\ma{#1 :: #2}}
 
 % abstract syntax for pathelem
 \newmeta\pesyntax{pe}

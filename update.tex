@@ -1,0 +1,44 @@
+\begin{figure*}
+\begin{mathpar}
+
+\begin{array}{lllr}
+\update{\propenv{}}{\Cons {\refinenotype{\rvar{}} {\prop{}}} {\R{}}}{\propisnotmeta{}}{\destructpath{\pathelem{}}{\carpe{}}}
+&=&
+{\Cons {\refinenotype{\rvar{}} {\andprop {\prop{}} {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\rvar{}}}}}} {\R{}}}
+\\
+\update{\propenv{}}{\Cons {\R{}}{\refinenotype{\rvar{}} {\prop{}}}}{\propisnotmeta{}}{\destructpath{\pathelem{}}{\cdrpe{}}}
+&=&
+{\Cons {\R{}}{\refinenotype{\rvar{}} {\andprop {\prop{}} {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\rvar{}}}}}} }
+\\\\
+\update{\propenv{}}{\t{}}{\s{}}{\emptypath{}}
+&=&
+\restrict{\propenv{}}{\t{}}{\s{}}
+\\\\
+
+\restrict{\propenv{}}{\t{}} {\s{}} &=& \Bot{}
+                       & \text{if} \not\exists \v{}.\  
+                         {\judgementtwo {\propenv{}} {\hastype {\v{}} {\refinenotype {\rvar{}} {\isprop {\s{}} {\rvar{}}}}}}
+                          \ \text{and}\ 
+                          {\judgementtwo {\propenv{}} {\hastype {\v{}} {\refinenotype {\rvar{}} {\isprop {\t{}} {\rvar{}}}}}}
+                          \\
+\restrict{\propenv{}}{\Unionsplice{\overrightarrow{{\t{}}}}}{\s{}} &=& 
+\Unionsplice{\overrightarrow{\restrict{\propenv{}}{{\t{}}}{\s{}}}}
+\\
+\restrict{\propenv{}}{\t{}}{\s{}} &=& {\t{}} & \text{if}\ {\issubtypein {\propenv{}} {\t{}} {\s{}}}
+\\
+\restrict{\propenv{}}{\t{}}{\s{}} &=& {\s{}} & \text{otherwise}
+\\\\
+\remove{\propenv{}}{\t{}}{\s{}} &=& {\Bot{}} & \text{if}\ {\issubtypein {\propenv{}} {\t{}} {\s{}}}
+\\
+\remove{\propenv{}}{\Unionsplice{\overrightarrow{{\t{}}}}}{\s{}} &=& 
+\Unionsplice{\overrightarrow{\remove{\propenv{}}{{\t{}}}{\s{}}}}
+\\
+\remove{\propenv{}}{\t{}}{\s{}} &=& {\t{}} & \text{otherwise}
+
+
+
+\end{array}
+
+\end{mathpar}
+\caption{Type Update}
+\end{figure*}
