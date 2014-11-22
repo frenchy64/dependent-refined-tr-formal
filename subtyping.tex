@@ -40,7 +40,9 @@
 }
 
 \infer [S-Fun]
-{ \issubrefin {\propenv{}} {\Rp{1}} {\R{1}}
+{ \x{} \not\in {\fv{\propenv{}}}
+  \\\\
+  \issubrefin {\propenv{}} {\Rp{1}} {\R{1}}
   \\
   \issubrefin {\propenv{}} {\R{2}} {\Rp{2}}
 }
@@ -62,7 +64,9 @@
                     \\\\
 
 \infer [SR-Refine]
-{ \inpropenv {\propenv{}} {\impprop {\prop{1}} {\prop{2}}}
+{ \rvar{} \not\in {\fv{\propenv{}}}
+  \\\\
+  \inpropenv {\propenv{}} {\impprop {\prop{1}} {\prop{2}}}
 }
 {
   \issubrefin {\propenv{}}
