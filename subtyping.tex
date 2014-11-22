@@ -39,15 +39,6 @@
                {\Cons {\Rp{1}} {\Rp{2}}}
 }
 
-\infer [SR-Refine]
-{ \inpropenv {\propenv{}} {\impprop {\prop{1}} {\prop{2}}}
-}
-{
-  \issubrefin {\propenv{}}
-      {\refinenotype {\rvar{}} {\prop{1}}}
-      {\refinenotype {\rvar{}} {\prop{2}}}
-}
-
 \infer [S-Fun]
 { \issubrefin {\propenv{}} {\Rp{1}} {\R{1}}
   \\
@@ -58,6 +49,27 @@
                     {\R{2}}}
     {\ArrowJustType {\x{}} {\Rp{1}}
                     {\Rp{2}}}}
+
+\infer [S-UnionSuper]
+{ \exists i.\ \issubtypein {\propenv{}} {\t{}} {\s{i}}}
+{ \issubtypein {\propenv{}}
+  {\t{}} {\Unionsplice {\overrightarrow {\s{}}^{i}}}}
+
+\infer [S-UnionSub]
+{ \overrightarrow{\issubtypein {\propenv{}} {\t{i}} {\s{}}}^{i}}
+{ \issubtypein {\propenv{}}
+  {\Unionsplice {\overrightarrow {\t{}}^{i}}} {\s{}}}
+                    \\\\
+
+\infer [SR-Refine]
+{ \inpropenv {\propenv{}} {\impprop {\prop{1}} {\prop{2}}}
+}
+{
+  \issubrefin {\propenv{}}
+      {\refinenotype {\rvar{}} {\prop{1}}}
+      {\refinenotype {\rvar{}} {\prop{2}}}
+}
+
 
 \end{mathpar}
 \caption{Subtyping rules}
