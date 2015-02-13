@@ -42,7 +42,7 @@ $$
            {{\pathelem{}}({\path {\pathelemp{}} {\anyvarp{}}})}}
            \\
 
-{\thenprop
+{\pluspolarity
 {\replacefor
   {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
   {\emptyobject{}}
@@ -51,7 +51,7 @@ $$
 &=&
 {\topprop{}}
 \\
-{\elseprop
+{\minuspolarity
 {\replacefor
   {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
   {\emptyobject{}}
@@ -69,27 +69,27 @@ $$
   {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
   & \anyvar{} \not= \anyvarppp{}\ \text{and}\ \anyvarppp{} \not\in {\fv {\propisnotmeta{}}}
 
-\\
-{\thenprop
-{\replacefor
-  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
-  {\object{}}
-  {\anyvarppp{}}}
-}
-&=&
-{\topprop{}}
-  & \anyvar{} \not= \anyvarppp{}\ \text{and}\ \anyvarppp{} \in {\fv {\propisnotmeta{}}}
-\\
-{\elseprop
-{\replacefor
-  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
-  {\object{}}
-  {\anyvarppp{}}}
-}
-&=&
-{\botprop{}}
-  & \anyvar{} \not= \anyvarppp{}\ \text{and}\ \anyvarppp{} \in {\fv {\propisnotmeta{}}}
-
+%\\
+%{\pluspolarity
+%{\replacefor
+%  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
+%  {\object{}}
+%  {\anyvarppp{}}}
+%}
+%&=&
+%{\topprop{}}
+%  & \anyvar{} \not= \anyvarppp{}\ \text{and}\ \anyvarppp{} \in {\fv {\propisnotmeta{}}}
+%\\
+%{\minuspolarity
+%{\replacefor
+%  {\isprop {\propisnotmeta{}} {\path {\pathelem{}} {\anyvar{}}}}
+%  {\object{}}
+%  {\anyvarppp{}}}
+%}
+%&=&
+%{\botprop{}}
+%  & \anyvar{} \not= \anyvarppp{}\ \text{and}\ \anyvarppp{} \in {\fv {\propisnotmeta{}}}
+%
 \\
 {\replacefor
   {\topprop{}}
@@ -107,7 +107,7 @@ $$
   {\botprop{}}
 
 \\
-{\thenprop
+{\pluspolarity
 {\replacefor
   {({\impprop {\prop{1}} {\prop{2}}})}
   {\object{}}
@@ -115,10 +115,10 @@ $$
 }
 &=&
 {\impprop 
-  {\elseprop {\replacefor {\prop{1}} {\object{}} {\anyvar{}}}}
-  {\thenprop {\replacefor {\prop{2}} {\object{}} {\anyvar{}}}}}
+  {\minuspolarity {\replacefor {\prop{1}} {\object{}} {\anyvar{}}}}
+  {\pluspolarity {\replacefor {\prop{2}} {\object{}} {\anyvar{}}}}}
 \\
-{\elseprop
+{\minuspolarity
 {\replacefor
   {({\impprop {\prop{1}} {\prop{2}}})}
   {\object{}}
@@ -126,8 +126,8 @@ $$
 }
 &=&
 {\impprop 
-  {\thenprop {\replacefor {\prop{1}} {\object{}} {\anyvar{}}}}
-  {\elseprop {\replacefor {\prop{2}} {\object{}} {\anyvar{}}}}}
+  {\pluspolarity {\replacefor {\prop{1}} {\object{}} {\anyvar{}}}}
+  {\minuspolarity {\replacefor {\prop{2}} {\object{}} {\anyvar{}}}}}
 \\
 {\replacefor
   {({\orprop {\prop{1}} {\prop{2}}})}
